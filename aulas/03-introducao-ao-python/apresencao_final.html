@@ -51,15 +51,15 @@ class: title-slide
 ---
 
 class: title-slide
-&lt;br&gt;&lt;br&gt;
 
-# .center.font170[Introdução ao Python]
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center.font170[Introdução ao Python <span>&lt;i class="fab  fa-python faa-float animated faa-slow "&gt;&lt;/i&gt;</span>]
 ---
 # Introdução ao Python
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;
-.font130[
-Python é uma linguagem multiparadigma, com uma sintaxe muito simples que permite ao programador focar no problema e deixar de lado questões da linguagem.
+.font150[
+Python é uma linguagem de programação, multiparadigma, que através de uma sintaxe simples, permite a seus utilizadores focar "no que fazer".
 ]
 
 &lt;br&gt;&lt;br&gt;
@@ -68,15 +68,21 @@ Python é uma linguagem multiparadigma, com uma sintaxe muito simples que permit
 class: title-slide
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-# .font170[Comandos básicos da linguagem] 
-
+# .center[.font170[Conceitos básicos da linguagem]]
 
 ---
 # Comandos básicos da linguagem
 
 .pull-left[
-
   ### Declarações de variáveis
+  
+  A declaração de variáveis no Python é feita com o sinal .bold[=]
+  
+  ```
+  variavel = valor da variável
+  ```
+  
+  Os valores das variáveis podem ser de diferentes tipos:
 
   
   ```python
@@ -90,26 +96,45 @@ class: title-slide
 ]
 
 .pull-right[
-  ### Manipulação simples!
+  **Manipulação de números (Inteiro e Float)**
+  
+  
+  ```python
+  inteiro + 2 # 125
+  
+  inteiro * 2 # 246
+  
+  flutuante / 2 # 0.5617
+  ```
+  
+  **Manipulação de listas**
 
   
   ```python
-  dicionario['chave']
-  ## 'valor'
-  lista[0:3] 
-  ## [1, 2, 3]
-  flutuante += 1 
-  # 1.1234
+  lista[0] # 1 (Primeiro valor)
+  
+  lista[0:3] # Do valor `0` à `2`
+  
+  lista[-1] # Último valor
+  ```
+  
+  **Manipulação de dicionário (Chave-Valor)**
+  
+  
+  ```python
+  dicionario['chave'] # 'valor'
   ```
 ]
 
 ---
 # Estrutura de controle de decisão
 
-As estruturas de controle de decisão facilitam o controle do fluxo que o código está tomando, representando parte importante da linguagem
+.font140[
+As estruturas de controle de decisão são utilizadas para determinar quais ações/códigos serão executados com base na verificação de testes lógicos.
+]
 
 .pull-left[
-### if
+**if**
 
 
 ```python
@@ -118,7 +143,7 @@ if (2 &gt; 1):
 ## Dois é maior que um!
 ```
 
-### else
+**else**
 
 
 ```python
@@ -128,14 +153,13 @@ else:
   print('Dois é maior que um')
 ## Dois é maior que um
 ```
-
 ]
 
 .pull-right[
 
 &lt;br&gt;
 
-### elif
+**elif**
 
 
 ```python
@@ -150,10 +174,12 @@ elif(1 &gt; 0.5):
 ---
 # Estrutura de repetição
 
-Essas são estruturas que permitem a criação de laços, havendo facilmente repetição de um certo bloco de código, e ainda, permite iterações em estruturas de dados como as listas
+.font130[
+Estruturas de repetição permitem que um determinado bloco de código seja executado por diversas vezes.
+]
 
 .pull-left[
-  ### while
+  **Iterando com testes lógicos (while)**
   
   
   ```python
@@ -169,42 +195,45 @@ Essas são estruturas que permitem a criação de laços, havendo facilmente rep
   ```
 ]
 
+&lt;div style="position: relative; top: -70px"&gt;
 .pull-right[
-  ### for-each
-  .pull-left[
-    
-    ```python
-    for i in [1, 2, 3]:
+  **Iterando em elementos (for-each)**
+
+  Iterando em uma lista de valores:
+  
+  ```python
+    for i in [11, 22]:
       print(i)
-    ## 1
-    ## 2
-    ## 3
-    ```
-  ]
-  .pull-right[
     
-    ```python
-    for i in range(0, 3):
+    # 1° Iteração (i = 11)
+    # 2° Iteração (i = 22)
+  ```
+
+  Iterando em um intervalo de valores:
+  
+  ```python
+    for i in range(0, 9, 3): # range(inicio, fim, passo)
       print(i)
-    ## 0
-    ## 1
-    ## 2
-    ```
-  ]
+  
+    # 1° Iteração (i = 0)
+    # 2° Iteração (i = 3)
+    # 3° Iteração (i = 6)
+  ```
 ]
+&lt;/div&gt;
 
 ---
 class: title-slide
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-# .center[.font170[Pandas] 🐼]
+# .center[.font170[Pandas] 🐼] 
 
 ---
 # Pandas 🐼
 
-&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
 .font130[
-Pandas é uma biblioteca open source, com licença BSD, que fornece estruturas de dados de alto desempenho para a análise de dados na linguagem Python.
+Pandas é uma biblioteca para a linguagem de programação Python, que fornece recursos rápidos, poderosos, flexíveis e .bold[fáceis de usar] para a manipulação e análise de dados.
 ]
 
 &lt;br&gt;
@@ -217,39 +246,110 @@ import pandas as pd
 ```
 
 ---
-class: title-slide
+# Pandas 🐼
 
-&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-# .font170[Estruturas de dados básicas do Pandas] 
+&lt;br&gt;
 
----
-# Estruturas de dados básicas do Pandas
+.center[.font160[.bold[Qual tipo de dado é possível manipular com `Pandas` ?]]]
 
-.pull-left[
-  ### Series
-  
-  - Estruturas unidimensionais;
-    - Dados armazenados em linhas
-  - Índice nas linhas;
-  - Suporte a qualquer tipo de dados;
-  - Exemplo de aplicação: Séries Temporais
-] 
+&lt;br&gt;
 
-.pull-right[
-  &lt;div style = "position:relative; left:160px; top: 60px;"&gt;
-    &lt;img src="images/python/pd_series12.png"&gt;&lt;/img&gt;
-  &lt;/div&gt;
+.center[
+.font130[
+  As funcionalidades do `Pandas` ajudam na exploração, limpeza e processamento de dados tabulares, como os armazenados em planilhas Excel, CSV ou bancos de dados tabulares.
+]
 ]
 
 ---
-# Estruturas de dados básicas do Pandas
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center[.font160[Estruturas de dados] 🎲]
+
+---
+# Estruturas de dados 🎲
+
+&lt;br&gt;&lt;br&gt;
+.pull-left[
+
+.center[
+.font200[<span class=" faa-float animated faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">&lt;img src="images/python/v2021/pandas_estruturas-de-dados_series.png" style="height:5em; width:auto; "/&gt;</span>]
+]
+.center[.font200[.bold[Series]]]
+]
+
+.pull-right[
+.center[
+.font200[<span class=" faa-float animated faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">&lt;img src="images/python/v2021/pandas_estruturas-de-dados_dataframes.png" style="height:5em; width:auto; "/&gt;</span>]
+]
+.center[.font200[.bold[DataFrames]]]
+]
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font150[.bold[Series] são estruturas de dados unidimensionais que permitem o armazenamento de sequências de valores.]
+]
+
+
+&lt;div style = "position:relative; left: 190px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series1.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font140[Cada uma das linhas são associadas a .bold[nomes] (ou índices), que podem ser utilizados para a busca e recuperação dos dados.]
+]
+
+&lt;div style = "position:relative; left: 190px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series2.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font140[Diferentes tipos de dados podem ser armazenados] .font100[(e.g. Inteiro, String, Float)] .font140[e utilizados para a criação dos índices de uma `Series`.]
+]
+
+&lt;div style = "position:relative; left: 150px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series3.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font140[Diferentes tipos de dados podem ser armazenados] .font100[(e.g. Inteiro, String, Float)] .font140[e utilizados para a criação dos índices de uma `Series`.]
+]
+
+&lt;div style = "position:relative; left: 150px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series4.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font140[Diferentes tipos de dados podem ser armazenados] .font100[(e.g. Inteiro, String, Float)] .font140[e utilizados para a criação dos índices de uma `Series`.]
+]
+
+&lt;div style = "position:relative; left: 150px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series5.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
 
 .center[
 .content-box-gray[.bold[Exemplos de utilização das Series]]
 ]
 
 .pull-left[
-  ### Criando uma Series simples
+  #### Criando uma `Series`
   
   ```python
   series = pd.Series([1, 2]) 
@@ -259,7 +359,7 @@ class: title-slide
   ## dtype: int64
   ```
   
-  ### Series com índice
+  #### `Series` com índice
   
   ```python
   series = pd.Series([1, 2], [9, 'ultimo'])
@@ -271,13 +371,13 @@ class: title-slide
 ]
 
 .pull-right[
-  ### Recuperando valores
+  #### Recuperando valores
 
-  A recuperação dos dados é muito parecida com as encontradas em dicionários (chave-valor).
+  A recuperação dos dados é feita da mesma forma como nos dicionários (chave-valor).
   
   
   ```python
-  print(series[9])
+  print(series[9])  # linha de 'nome' = 9
   ## 1
   print(series["ultimo"])
   ## 2
@@ -292,32 +392,47 @@ class: title-slide
 ]
 
 ---
-# Estruturas de dados básicas do Pandas
+# Estruturas de dados 🎲
 
-.pull-left[
-  ### DataFrames
-  
-  - Estruturas multidimensionais;
-    - Dados armazenados em linhas e colunas.
-  - Índice nas linhas e colunas;
-  - Suporte a qualquer tipo de dados (Um diferente para cada coluna).
-] 
-
-.pull-right[
-  &lt;div style = "position:relative; right:30px; top: -20px;"&gt;
-    &lt;img src="images/python/pd_df13.png"&gt;&lt;/img&gt;
-  &lt;/div&gt;
+.center[
+.content-box-gray[.bold[Questão]: Como tratar os casos em que há mais colunas ?]
 ]
 
+&lt;div style = "position:relative; left: 100px; top: -5px; width: 80%"&gt;
+  &lt;img src="images/python/v2021/pandas_series6.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
 ---
-# Estruturas de dados básicas do Pandas
+# Estruturas de dados 🎲
+
+.center[
+.content-box-gray[.bold[Questão]: Como tratar os casos em que há mais colunas ?]
+]
+
+&lt;div style = "position:relative; left: 100px; top: -5px; width: 80%"&gt;
+  &lt;img src="images/python/v2021/pandas_series7.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font130[.bold[DataFrames] são estruturas de dados bidimensionais, representando tabelas, formadas por conjuntos de Series. É a estrutura de dados principal do Pandas.
+]]
+
+&lt;div style = "position:relative; left: 120px; top: -5px; width: 77%"&gt;
+  &lt;img src="images/python/v2021/pandas_dataframe1.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
 
 .center[
   .content-box-gray[.bold[Exemplos de utilização dos DataFrames]]
 ]
 
 .pull-left[
-  #### Criando um DataFrame básico
+  #### Criando um DataFrame
   
   
   ```python
@@ -353,36 +468,39 @@ class: title-slide
   ## um     1   2   3   4
   ## dois  11  12  13  14
   ```
+
+.pull-left[
+  .bold[.font80[Valor de coluna]]
+
   
-  #### Recuperando valores
-  
-  .pull-left[
-    
-    ```python
-    print(df['b']['um'])
-    ## 2
-    ```
-  ]
-  
-  .pull-right[
-    
-    ```python
-    print(df['a']['dois'])
-    ## 11
-    ```
-  ]
+  ```python
+  df['b'] # &lt;class 'pandas.core.series.Series'&gt;
+  ## um       2
+  ## dois    12
+  ## Name: b, dtype: int64
+  ```
 ]
+
+.pull-right[
+  .bold[.font80[Valor de coluna e linha]]
+
+  
+  ```python
+  df['a']['dois']
+  ## 11
+  ```
+]]
 
 ---
 class: title-slide
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-# .font140[Manipulação básica de dados com Pandas] 
+# .font140[Manipulação básica de dados com Pandas]
 
 &lt;!-- No slide após este, inserir uma figura mostrando o processo de manipulação dos dados. (Pegando de uma tabela completa e entendendo somente uma parte, filtro e etc...) --&gt;
 
 ---
-# Manipulação básica de dados com Pandas
+# Manipulação de dados com Pandas
 
 O pandas fornece diversos métodos para a seleção e filtro de dados. Todos são úteis para o processo de análise de dados.
 
@@ -400,7 +518,7 @@ Os métodos `loc` e `iloc` são exemplos de métodos que podem ser utilizados pa
 ]
 
 ---
-# Manipulação básica de dados com Pandas
+# Manipulação de dados com Pandas
 
 .center[
   .content-box-gray[.bold[Exemplo de utilização do loc e iloc]]
@@ -450,7 +568,58 @@ Os métodos `loc` e `iloc` são exemplos de métodos que podem ser utilizados pa
 ]
 
 ---
-# Filtro de dados
+# Manipulação de dados com Pandas
+
+.pull-left[
+  #### Indexação booleana
+
+  É possível fazer o filtro de dados com um índice booleano
+
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['A1', 'A2', 'A3', 'A4'], 'valor': [5, 12, 8, 30]
+  })
+  
+  df[[False, True, False, True]]
+  ##   nome  valor
+  ## 1   A2     12
+  ## 3   A4     30
+  ```
+  
+  A indexação pode ser feita de forma automática, com uma comparação lógica
+  
+  ```python
+  df[df['valor'] &gt; 10]
+  ##   nome  valor
+  ## 1   A2     12
+  ## 3   A4     30
+  ```
+]
+  
+.pull-right[
+  &lt;br&gt;&lt;br&gt;
+  Criando expressões mais `complexas`
+  
+  ```python
+  df[(df['valor'] &gt;= 5) &amp; (df['valor'] &lt; 12)]
+  ##   nome  valor
+  ## 0   A1      5
+  ## 2   A3      8
+  ```
+  
+  As mesmas consultas podem ser realizadas com o método `query()`.
+  
+  ```python
+  df.query('valor &gt;= 5 &amp; valor &lt; 12')
+  ##   nome  valor
+  ## 0   A1      5
+  ## 2   A3      8
+  ```
+]
+
+---
+# Manipulação de dados com Pandas
 
 .center[
   .font135[Para muitas partes da análise de dados, realizar filtros e buscas é de extrema importância. No Pandas há diversos métodos que podem ser aplicados.]
@@ -495,84 +664,6 @@ Os métodos `loc` e `iloc` são exemplos de métodos que podem ser utilizados pa
   ## 3     30
   ```
 ]
-
----
-# Filtro de dados
-
-.pull-left[
-  #### Indexação booleana
-
-  É possível fazer o filtro de dados com um índice booleano
-
-  
-  ```python
-  df[[False, True, False, True]]
-  ##   nome  valor
-  ## 1   A2     12
-  ## 3   A4     30
-  ```
-  
-  A indexação pode ser feita de forma automática, com uma comparação lógica
-  
-  ```python
-  df[df['valor'] &gt; 10]
-  ##   nome  valor
-  ## 1   A2     12
-  ## 3   A4     30
-  ```
-]
-  
-.pull-right[
-  &lt;br&gt;&lt;br&gt;
-  Criando expressões mais `complexas`
-  
-  ```python
-  df[(df['valor'] &gt;= 5) &amp; (df['valor'] &lt; 12)]
-  ##   nome  valor
-  ## 0   A1      5
-  ## 2   A3      8
-  ```
-  
-  As mesmas consultas podem ser realizadas com o método `query()`.
-  
-  ```python
-  df.query('valor &gt;= 5 &amp; valor &lt; 12')
-  ##   nome  valor
-  ## 0   A1      5
-  ## 2   A3      8
-  ```
-]
-
----
-# Filtro de dados
-
-.center[
-  .content-box-gray[.bold[Dica: Filtragem e substituição (where)]]
-]
-
-&lt;br&gt;
-
-
-```python
-df_2 = df.copy()
-df_2[df_2['valor'] &gt; 10] = -99; print(df_2)
-##   nome  valor
-## 0   A1      5
-## 1  -99    -99
-## 2   A3      8
-## 3  -99    -99
-```
-
-Uma forma mais elegante, trabalhando com `where`
-
-```python
-df.where(df['valor'] &lt; 10, -99)
-##   nome  valor
-## 0   A1      5
-## 1  -99    -99
-## 2   A3      8
-## 3  -99    -99
-```
 
 ---
 # Agrupamento e agregação
@@ -682,7 +773,7 @@ Agregações são operações aplicadas sobre os dados que resultam em um conjun
   
   ```python
   print(agrupado)
-  ## &lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f0068bab100&gt;
+  ## &lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f969f4d6fa0&gt;
   ```
   
   Recuperando os grupos gerados
