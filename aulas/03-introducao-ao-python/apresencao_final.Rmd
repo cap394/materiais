@@ -63,9 +63,9 @@ class: title-slide
 <br><br>
 
 
-- .font120[Introdução ao R `r anicon::faa("r-project", animate = 'float', speed = 'slow', color = 'steelblue')`]
+- .font120[<s>Introdução ao R</s> `r anicon::faa("r-project", animate = 'float', speed = 'slow', color = 'steelblue')`]
 
-  - .font120[Tidyverse `r anicon::cia("./images/2_r_img/logo_tidyverse_menor.png", animate = 'float', speed = 'slow')`]
+  - .font120[<s>Tidyverse</s> `r anicon::cia("./images/2_r_img/logo_tidyverse_menor.png", animate = 'float', speed = 'slow')`]
 
 - .font120[Introdução ao Python `r anicon::faa("python", animate = 'float', speed = 'slow')`]
 
