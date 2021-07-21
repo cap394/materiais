@@ -59,7 +59,7 @@ class: title-slide
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;
 .font150[
-Python é uma linguagem de programação, multiparadigma, que através de uma sintaxe simples, permite a seus utilizadores focar "no que fazer".
+Python é uma linguagem de programação multiparadigma, que através de uma sintaxe simples, permite a seus utilizadores focar na solução de problemas, não os impedindo com complexidades além do necessário.
 ]
 
 &lt;br&gt;&lt;br&gt;
@@ -74,7 +74,7 @@ class: title-slide
 # Comandos básicos da linguagem
 
 .pull-left[
-  ### Declarações de variáveis
+  #### Declarações de variáveis
   
   A declaração de variáveis no Python é feita com o sinal .bold[=]
   
@@ -96,7 +96,7 @@ class: title-slide
 ]
 
 .pull-right[
-  **Manipulação de números (Inteiro e Float)**
+  #### Manipulação de números (Inteiro e Float)
   
   
   ```python
@@ -107,7 +107,7 @@ class: title-slide
   flutuante / 2 # 0.5617
   ```
   
-  **Manipulação de listas**
+  #### Manipulação de listas
 
   
   ```python
@@ -118,7 +118,7 @@ class: title-slide
   lista[-1] # Último valor
   ```
   
-  **Manipulação de dicionário (Chave-Valor)**
+  #### Manipulação de dicionário (Chave-Valor)
   
   
   ```python
@@ -345,7 +345,7 @@ class: title-slide
 # Estruturas de dados 🎲
 
 .center[
-.content-box-gray[.bold[Exemplos de utilização das Series]]
+.content-box-gray[.bold[Exemplos de manipulação das Series]]
 ]
 
 .pull-left[
@@ -362,32 +362,101 @@ class: title-slide
   #### `Series` com índice
   
   ```python
-  series = pd.Series([1, 2], [9, 'ultimo'])
+  series = pd.Series([1, 2, 3], [9, 'ultimo', 'tres'])
   print(series)
   ## 9         1
   ## ultimo    2
+  ## tres      3
   ## dtype: int64
   ```
 ]
 
+&lt;div style="position: relative; top: -30px"&gt;
 .pull-right[
-  #### Recuperando valores
+  #### Recuperando dados
 
-  A recuperação dos dados é feita da mesma forma como nos dicionários (chave-valor).
+  Pode-se recuperar os dados com o operador .bold[[]].
   
-  
-  ```python
-  print(series[9])  # linha de 'nome' = 9
-  ## 1
-  print(series["ultimo"])
-  ## 2
+  ```
+  serie[nome da linha]
   ```
   
+  Recuperação de uma linha única:
+  
   
   ```python
-  dicionario = {"Nome": "Maria"}
-  print(dicionario["Nome"])
-  ## Maria
+  series[9]
+  ## 1
+  ```
+
+  Intervalos de valores também são permitidos:
+
+  
+  ```python
+  series[9: 'tres']
+  ## 9         1
+  ## ultimo    2
+  ## tres      3
+  ## dtype: int64
+  ```
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de utilização]: Trajetória de uso e cobertura da Terra (LULC).]
+
+.center[
+  Trajetória: Variação temporal de classes de LULC em uma determinada localização no espaço geográfico.
+]
+
+.pull-left[
+  &lt;!-- .center.bold[Criando a trajetória como uma `Series`] --&gt;
+  #### Criando a trajetória como uma `Series`
+
+  
+  ```python
+  trajectory = pd.Series([
+    "Pastagem", "Pastagem", 
+    "Outras Lavouras Temporárias", 
+    "Soja", "Soja"
+  ], index = [2014, 2015, 2016, 2017, 2018])
+  
+  trajectory
+  ## 2014                       Pastagem
+  ## 2015                       Pastagem
+  ## 2016    Outras Lavouras Temporárias
+  ## 2017                           Soja
+  ## 2018                           Soja
+  ## dtype: object
+  ```
+  
+  .bold.center.font50[
+    Trajetória extraída da localização (-10.710, -55.612) com o serviço &lt;a href="https://github.com/brazil-data-cube/wlts"&gt;WLTS&lt;/a&gt; (Coleção MapBiomas 5).
+  ]
+]
+
+.pull-right[
+  &lt;!-- .center.bold[Mais formas de acessar os dados] --&gt;
+  #### Mais formas de acessar os dados
+  
+  Recuperando os primeiros valores com `head`.
+  
+  
+  ```python
+  trajectory.head(n = 2) # padrão (n = 5)
+  ## 2014    Pastagem
+  ## 2015    Pastagem
+  ## dtype: object
+  ```
+  
+  Recuperando os últimos valores com `tail`.
+  
+  
+  ```python
+  trajectory.tail(n = 2)
+  ## 2017    Soja
+  ## 2018    Soja
+  ## dtype: object
   ```
 ]
 
@@ -428,7 +497,7 @@ class: title-slide
 # Estruturas de dados 🎲
 
 .center[
-  .content-box-gray[.bold[Exemplos de utilização dos DataFrames]]
+  .content-box-gray[.bold[Exemplo de manipulação dos DataFrames]]
 ]
 
 .pull-left[
@@ -455,6 +524,7 @@ class: title-slide
   ```
 ]
 
+&lt;div style="position: relative; top: 80px"&gt;
 .pull-right[
   #### Índices e colunas
   
@@ -468,64 +538,161 @@ class: title-slide
   ## um     1   2   3   4
   ## dois  11  12  13  14
   ```
+]
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+  .content-box-gray[.bold[Exemplo de manipulação dos DataFrames]]
+]
 
 .pull-left[
-  .bold[.font80[Valor de coluna]]
 
+  #### Recuperando dados
+  
+  Como as `Series`, nos `DataFrames` a recuperação básica de dados ocorre com o operador .bold[[]].
+  
+  ```
+  dataframe[nome da coluna]
+  ```
+
+  #### DataFrame de exemplo
   
   ```python
-  df['b'] # &lt;class 'pandas.core.series.Series'&gt;
-  ## um       2
-  ## dois    12
-  ## Name: b, dtype: int64
+  df = pd.DataFrame([[1, 2, 3, 4], [11, 12, 13, 14]], 
+                  index = ['um', 'dois'], 
+                  columns = ['a', 'b', 'c', 'd'])
+  print(df)
+  ##        a   b   c   d
+  ## um     1   2   3   4
+  ## dois  11  12  13  14
   ```
 ]
 
+&lt;div style="position: relative; top: -30px"&gt;
 .pull-right[
-  .bold[.font80[Valor de coluna e linha]]
+  #### Colunas disponíveis
 
   
   ```python
-  df['a']['dois']
-  ## 11
+  print(df.columns)
+  ## Index(['a', 'b', 'c', 'd'], dtype='object')
   ```
-]]
+
+  #### Recuperando uma coluna
+  
+  
+  ```python
+  df['a'] # &lt;class 'pandas.core.series.Series'&gt;
+  ## um       1
+  ## dois    11
+  ## Name: a, dtype: int64
+  ```
+  
+  #### Recuperando mais colunas
+  
+  
+  ```python
+  df[['a', 'b']] # &lt;class 'pandas.core.frame.DataFrame'&gt;
+  ##        a   b
+  ## um     1   2
+  ## dois  11  12
+  ```
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de utilização]: Séries temporais de imagens de satélite (SITS).]
+
+.center[
+  SITS: Variação temporal de bandas espectrais em uma determinada localização no espaço geográfico.
+]
+
+.pull-left[
+  .center.bold[`DataFrame` com SITS de vários pontos.]
+
+  
+  ```python
+  sits = pd.DataFrame({
+    "P1_NDVI": [0.578, 0.653, 0.691, 0.451], # Ponto 1
+    "P2_NDVI": [0.592, 0.617, 0.580, 0.578], # Ponto 2
+    "P3_NDVI": [0.574, 0.591, 0.570, 0.385]  # Ponto 3
+  }, index = ["2017-01-01", "2017-01-17", 
+              "2017-02-02", "2017-02-18"])
+  
+  sits
+  ##             P1_NDVI  P2_NDVI  P3_NDVI
+  ## 2017-01-01    0.578    0.592    0.574
+  ## 2017-01-17    0.653    0.617    0.591
+  ## 2017-02-02    0.691    0.580    0.570
+  ## 2017-02-18    0.451    0.578    0.385
+  ```
+  
+  .bold.center.font50[
+    SITS extraídas com o serviço &lt;a href="https://github.com/brazil-data-cube/wtss.py"&gt;WTSS&lt;/a&gt; (Coverage CBERS-4/AWFI).
+  ]
+]
+
+&lt;div style="position: relative; top: 40px"&gt;
+.pull-right[
+  .center[Visão geral dos dados com `describe`.]
+  
+  
+  ```python
+  sits.describe() # Informações estatísticas
+  ##         P1_NDVI   P2_NDVI   P3_NDVI
+  ## count  4.000000  4.000000  4.000000
+  ## mean   0.593250  0.591750  0.530000
+  ## std    0.105819  0.017933  0.097094
+  ## min    0.451000  0.578000  0.385000
+  ## 25%    0.546250  0.579500  0.523750
+  ## 50%    0.615500  0.586000  0.572000
+  ## 75%    0.662500  0.598250  0.578250
+  ## max    0.691000  0.617000  0.591000
+  ```
+]
+&lt;/div&gt;
 
 ---
 class: title-slide
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-# .font140[Manipulação básica de dados com Pandas]
+# .center.font140[Seleção e filtro de dados com Pandas]
 
 &lt;!-- No slide após este, inserir uma figura mostrando o processo de manipulação dos dados. (Pegando de uma tabela completa e entendendo somente uma parte, filtro e etc...) --&gt;
 
 ---
-# Manipulação de dados com Pandas
+# Seleção e filtro de dados com Pandas
 
-O pandas fornece diversos métodos para a seleção e filtro de dados. Todos são úteis para o processo de análise de dados.
+.font120[Durante o processo de análise, faz-se necessário a realização de seleção e filtro dos dados para a captura de comportamentos específicos. O Pandas fornece diferentes métodos para essas operações.]
+
+&lt;!-- &gt; No `Pandas` estão disponíveis [diferentes métodos](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#indexing-and-selecting-data) para essas operações. --&gt;
 
 --
 ## loc e iloc
 
-Os métodos `loc` e `iloc` são exemplos de métodos que podem ser utilizados para essas atividades.
+Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permitem a seleção e filtro de dados armazenados em `Series` e `DataFrames`.
 
-&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
 .center[
-  | DataFrame                                  | Series                  |
-  |--------------------------------------------|-------------------------|
-  | \.loc[Nome da linha,  Nome da coluna]   | \.loc[Nome da linha] |
-  | \.iloc[posição da linha, posição da coluna] | \.iloc[Posição da linha] |
+  | Series                    |           DataFrames                        |
+  |---------------------------|---------------------------------------------|
+  |  \.loc[Nome da linha]     | \.loc[Nome da linha,  Nome da coluna]       |
+  |  \.iloc[Posição da linha] | \.iloc[posição da linha, posição da coluna] |
 ]
 
 ---
-# Manipulação de dados com Pandas
+# Seleção e filtro de dados com Pandas
 
 .center[
-  .content-box-gray[.bold[Exemplo de utilização do loc e iloc]]
+  .content-box-gray[.bold[Exemplo de utilização do loc]]
 ]
 
+&lt;div style="position: relative; top: 50px"&gt;
 .pull-left[
-  ### DataFrame de exemplo
+  #### DataFrame de exemplo
   
   
   ```python
@@ -534,9 +701,31 @@ Os métodos `loc` e `iloc` são exemplos de métodos que podem ser utilizados pa
     'idade': [15, 18, 21],
     'nota': [8, 9, 10]
   }, index = [7, 8, 9])
+  
+  df
+  ##      nome  idade  nota
+  ## 7   Joana     15     8
+  ## 8   Maria     18     9
+  ## 9  Josefa     21    10
+  ```
+]
+&lt;/div&gt;
+
+.pull-right[
+  #### Selecionando dados pelo `nome` das linhas e colunas.
+
+  Recuperando a linha de `nome` "9".
+  
+  
+  ```python
+  print(df.loc[9])
+  ## nome     Josefa
+  ## idade        21
+  ## nota         10
+  ## Name: 9, dtype: object
   ```
 
-  Recuperando a linha de `nome` 9 e a coluna de nome `idade`.
+  Recuperando a linha de `nome` 9 e a coluna de `nome` "idade".
   
   
   ```python
@@ -545,187 +734,375 @@ Os métodos `loc` e `iloc` são exemplos de métodos que podem ser utilizados pa
   ```
 ]
 
-.pull-right[
-  É possível também recuperar mais de uma coluna ao mesmo tempo
-  
-  
-  ```python
-  print(df.loc[9, ['nome', 'idade']])
-  ## nome     Josefa
-  ## idade        21
-  ## Name: 9, dtype: object
-  ```
-  
-  Para recuperar as posições, utilize o `iloc`.
-  
-  
-  ```python
-  print(df.iloc[2][['nome', 'idade']])
-  ## nome     Josefa
-  ## idade        21
-  ## Name: 9, dtype: object
-  ```
-]
-
 ---
-# Manipulação de dados com Pandas
-
-.pull-left[
-  #### Indexação booleana
-
-  É possível fazer o filtro de dados com um índice booleano
-
-  
-  ```python
-  df = pd.DataFrame({
-    'nome': ['A1', 'A2', 'A3', 'A4'], 'valor': [5, 12, 8, 30]
-  })
-  
-  df[[False, True, False, True]]
-  ##   nome  valor
-  ## 1   A2     12
-  ## 3   A4     30
-  ```
-  
-  A indexação pode ser feita de forma automática, com uma comparação lógica
-  
-  ```python
-  df[df['valor'] &gt; 10]
-  ##   nome  valor
-  ## 1   A2     12
-  ## 3   A4     30
-  ```
-]
-  
-.pull-right[
-  &lt;br&gt;&lt;br&gt;
-  Criando expressões mais `complexas`
-  
-  ```python
-  df[(df['valor'] &gt;= 5) &amp; (df['valor'] &lt; 12)]
-  ##   nome  valor
-  ## 0   A1      5
-  ## 2   A3      8
-  ```
-  
-  As mesmas consultas podem ser realizadas com o método `query()`.
-  
-  ```python
-  df.query('valor &gt;= 5 &amp; valor &lt; 12')
-  ##   nome  valor
-  ## 0   A1      5
-  ## 2   A3      8
-  ```
-]
-
----
-# Manipulação de dados com Pandas
+# Seleção e filtro de dados com Pandas
 
 .center[
-  .font135[Para muitas partes da análise de dados, realizar filtros e buscas é de extrema importância. No Pandas há diversos métodos que podem ser aplicados.]
+  .content-box-gray[.bold[Exemplo de utilização do iloc]]
 ]
 
+&lt;div style="position: relative; top: 50px"&gt;
 .pull-left[
   #### DataFrame de exemplo
   
   
   ```python
   df = pd.DataFrame({
-    'nome': ['A1', 'A2', 'A3', 'A4'], 'valor': [5, 12, 8, 30]
-  })
-  ```
+    'nome': ['Joana', 'Maria', 'Josefa'],
+    'idade': [15, 18, 21],
+    'nota': [8, 9, 10]
+  }, index = [7, 8, 9])
   
-  #### filter
-
-  Filtra os dados pelo nome da coluna
-  
-  
-  ```python
-  df.filter(items = ['valor'])
-  ##    valor
-  ## 0      5
-  ## 1     12
-  ## 2      8
-  ## 3     30
+  df
+  ##      nome  idade  nota
+  ## 7   Joana     15     8
+  ## 8   Maria     18     9
+  ## 9  Josefa     21    10
   ```
 ]
+&lt;/div&gt;
 
 .pull-right[
-  &lt;br&gt;&lt;br&gt;
-  Filtrando os dados por uma coluna que contenha no nome a palavra `lo`.
+  #### Selecionando dados pela `posição` das linhas e colunas.
+
+  Recuperando a linha de `posição` "1".
   
   
   ```python
-  df.filter(like='lo', axis = 1)
-  ##    valor
-  ## 0      5
-  ## 1     12
-  ## 2      8
-  ## 3     30
+  print(df.iloc[2])
+  ## nome     Josefa
+  ## idade        21
+  ## nota         10
+  ## Name: 9, dtype: object
+  ```
+
+  Recuperando a linha de `posição` "1" e a coluna de `posição` "2".
+  
+  
+  ```python
+  print(df.iloc[1, 2])
+  ## 9
   ```
 ]
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Comparação entre loc e iloc]]
+]
+
+&lt;div style="position: relative; top: 50px"&gt;
+.pull-left[
+  #### DataFrame de exemplo
+  
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['Joana', 'Maria', 'Josefa'],
+    'idade': [15, 18, 21],
+    'nota': [8, 9, 10]
+  }, index = [7, 8, 9])
+  
+  df
+  ##      nome  idade  nota
+  ## 7   Joana     15     8
+  ## 8   Maria     18     9
+  ## 9  Josefa     21    10
+  ```
+]
+&lt;/div&gt;
+
+.pull-right[
+  #### Selecionando dados pela `posição` e `nome`.
+
+  Recuperando a linha de `nome` "9" com .bold[loc].
+  
+  
+  ```python
+  print(df.loc[9])
+  ## nome     Josefa
+  ## idade        21
+  ## nota         10
+  ## Name: 9, dtype: object
+  ```
+
+  Recuperando a linha de `posição` "1" com .bold[iloc].
+  
+  
+  ```python
+  print(df.iloc[2])
+  ## nome     Josefa
+  ## idade        21
+  ## nota         10
+  ## Name: 9, dtype: object
+  ```
+]
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Comparação entre loc e iloc]]
+]
+
+&lt;div style="position: relative; top: 70px"&gt;
+.pull-left[
+  #### `DataFrame` com SITS de vários pontos.
+
+  
+  ```python
+  print(sits)
+  ##             P1_NDVI  P2_NDVI  P3_NDVI
+  ## 2017-01-01    0.578    0.592    0.574
+  ## 2017-01-17    0.653    0.617    0.591
+  ## 2017-02-02    0.691    0.580    0.570
+  ## 2017-02-18    0.451    0.578    0.385
+  ```
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: -10px"&gt;
+.pull-right[
+  #### Selecionando dados com intervalos
+
+  Recuperando intervalo de nomes das linhas.
+  
+  
+  ```python
+  print(sits.loc["2017-01-01":"2017-01-17", "P2_NDVI"])
+  ## 2017-01-01    0.592
+  ## 2017-01-17    0.617
+  ## Name: P2_NDVI, dtype: float64
+  ```
+
+  Recuperando intervalo de posições das linhas.
+  
+  
+  ```python
+  print(sits.iloc[0:2, 1])
+  ## 2017-01-01    0.592
+  ## 2017-01-17    0.617
+  ## Name: P2_NDVI, dtype: float64
+  ```
+]
+&lt;/div&gt;
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Filtro de dados]]
+]
+
+.pull-left[
+  #### Indexação booleana
+
+  É possível fazer o filtro de dados com um índice booleano.
+
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['A1', 'A2', 'A3', 'A4'], 
+    'valor': [5, 12, 8, 30]
+  })
+  
+  df
+  ##   nome  valor
+  ## 0   A1      5
+  ## 1   A2     12
+  ## 2   A3      8
+  ## 3   A4     30
+  ```
+]
+
+&lt;div style="position: relative; top: 24px"&gt;
+.pull-right[
+  O filtro dos dados pode ser feito com .bold[loc] e .bold[iloc].
+  
+  #### loc
+  
+  
+  ```python
+  df.loc[[False, True, False, True]]
+  ##   nome  valor
+  ## 1   A2     12
+  ## 3   A4     30
+  ```
+  
+  #### iloc
+  
+  
+  ```python
+  df.iloc[[False, True, False, True]]
+  ##   nome  valor
+  ## 1   A2     12
+  ## 3   A4     30
+  ```
+]
+&lt;/div&gt;
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Filtro de dados]]
+]
+
+.pull-left[
+  #### Expressões booleanas
+  
+  Testes lógicos podem ser adicionados no filtro para a geração das listas booleanas. 
+  
+  ```
+      dataframe.loc[(teste 1)]
+  ```
+  
+  &lt;br&gt;
+  Filtrando valores maiores que "5".
+  
+  ```python
+  df.loc[df['valor'] &gt; 5]
+  ##   nome  valor
+  ## 1   A2     12
+  ## 2   A3      8
+  ## 3   A4     30
+  ```
+]
+
+&lt;div style="position: relative; top: 70px"&gt;
+.pull-right[
+
+  A expressão retorna os valores booleanos do teste feito.
+  
+  ```python
+  df['valor'] &gt; 5
+  ## 0    False
+  ## 1     True
+  ## 2     True
+  ## 3     True
+  ## Name: valor, dtype: bool
+  ```
+]
+&lt;/div&gt;
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Filtro de dados]]
+]
+
+.pull-left[
+  #### Expressões booleanas mais `complexas`
+  
+  Mais testes lógicos podem ser adicionados ao filtro. Cada teste é separado por um operador lógico e parênteses.
+  
+  ```
+      dataframe.loc[(teste 1) operador (teste 2)]
+  ```
+  
+&lt;br&gt;
+Os operadores lógicos são:
+- **e** (`&amp;`);
+- **ou** (`|`).
+]
+
+&lt;div style="position: relative; top: 45px"&gt;
+.pull-right[
+
+  Filtrando valores maiores ou igual a 5 **e** menores que 12. 
+  
+  ```python
+  df.loc[(df['valor'] &gt; 5) &amp; (df['valor'] &lt; 12)]
+  ##   nome  valor
+  ## 2   A3      8
+  ```
+  
+  O método `query` pode ser mais amigável.
+  
+  ```python
+  df.query('valor &gt; 5 &amp; valor &lt; 12')
+  ##   nome  valor
+  ## 2   A3      8
+  ```
+]
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center.font140[Agrupamento e agregação de dados]
 
 ---
 # Agrupamento e agregação
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;
 .font130[
-Agrupar e agregar dados ajuda na análise dos dados. É através deste processo que técnicas de análise exploratória de dados e estatística descritiva podem ser aplicadas em diferentes grupos de dados.
+.bold[Agrupar] e .bold[agregar] são técnicas que facilitam a análise de dados. Em etapas exploratórias, essas operações podem ser essenciais para a identificação e entendimento de padrões nos dados.
 ]
 
 ---
 # Agrupamento e agregação
 
-&lt;br&gt;
+&lt;div style="position: relative; top: 40px"&gt;
 .font130[
-Agregações são operações aplicadas sobre os dados que resultam em um conjunto de valores
+Agregações são operações aplicadas sobre os dados que resultam em conjuntos de valores. Esses valores podem variar em seu tipo de acordo com a estrutura de dados em que é aplicado.
 ]
+&lt;/div&gt;
 
-&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
 
-.content-box-gray[.bold[Algumas funções de agregação]] <span>&lt;i class="fas  fa-hand-point-left faa-horizontal animated "&gt;&lt;/i&gt;</span>
+.content-box-gray[.font120[.bold[Algumas funções de agregação]]] <span>&lt;i class="fas  fa-hand-point-left faa-horizontal animated "&gt;&lt;/i&gt;</span>
 
-- sum();
-- max();
-- min();
-- mean().
+- .font120[sum()];
+- .font120[max()];
+- .font120[min()];
+- .font120[mean()].
+
 
 ---
 # Agrupamento e agregação
 
+.center[
+  .content-box-gray[.bold[Agregação de dados]]
+]
+
+&lt;div style="position: relative; top: -50px"&gt;
 .pull-left[
-  ### Agregando `Series`
+  ### `Series`
 
   
   ```python
   s = pd.Series([1, 2, 3])
   ```
 
-  Calculando o somatório
+  Calculando o somatório com `sum`
   
   ```python
   s.sum()
   ## 6
   ```
 
-  Valor mínimo
+  Valor mínimo com `min`
   
   ```python
   s.min()
   ## 1
   ```
-
 ]
+&lt;/div&gt;
 
+&lt;div style="position: relative; top: -50px"&gt;
 .pull-right[
-  ### Agregando `DataFrames`
+  ### `DataFrames`
 
   
   ```python
   df = pd.DataFrame([[1, 2, 3], [4, 5, 6]])
   ```
-
-  Calculando o valor médio
+  
+  Calculando o valor médio com `mean`
   
   ```python
   df.mean()
@@ -735,7 +1112,7 @@ Agregações são operações aplicadas sobre os dados que resultam em um conjun
   ## dtype: float64
   ```
 
-  Valor máximo
+  Valor máximo com `max`.
   
   ```python
   df.max()
@@ -745,16 +1122,19 @@ Agregações são operações aplicadas sobre os dados que resultam em um conjun
   ## dtype: int64
   ```
 ]
+&lt;/div&gt;
 
 ---
 # Agrupamento e agregação
 
 .center[
-  No processo de agrupamento, os dados são agrupados com base em suas características. Para tal finalidade, o Pandas disponibiliza o método `groupby`.
+  .content-box-gray[.bold[Agrupamento de dados]]
 ]
 
 .pull-left[
-  ### Agrupando dados
+  #### Agrupando dados com `groupby`
+  
+  É possível agrupar instâncias do conjunto de dados com base na igualdade de seus atributos.
   
   
   ```python
@@ -763,26 +1143,34 @@ Agregações são operações aplicadas sobre os dados que resultam em um conjun
     'tipo': ['antigo', 'novo', 'novo']
   })
   
-  agrupado = df.groupby('tipo')
+  df
+  ##    nome    tipo
+  ## 0  Tel1  antigo
+  ## 1  Tel2    novo
+  ## 2  Tel3    novo
   ```
 ]
 
+&lt;div style="position: relative; top: 70px"&gt;
 .pull-right[
-  Tipo retornado
+  Agrupando pela coluna/atributo `tipo`
   
   
   ```python
-  print(agrupado)
-  ## &lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f969f4d6fa0&gt;
+  telefones_agrupados = df.groupby('tipo')
   ```
-  
+
+  &lt;/br&gt;
+
   Recuperando os grupos gerados
   
+  
   ```python
-  agrupado.groups
+  telefones_agrupados.groups
   ## {'antigo': [0], 'novo': [1, 2]}
   ```
 ]
+&lt;/div&gt;
 
 ---
 class: title-slide
@@ -795,18 +1183,17 @@ class: title-slide
 
 &lt;br&gt;
 
-.center[
-  ![](images/python/split-apply-combine.png)
-]
+&lt;div style = "position:relative; left: 120px; top: -5px; width: 77%"&gt;
+  &lt;img src="images/python/v2021/pandas_groupby.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
 
 ---
-# Agrupamento + Agregação
+# .font70[.bold[Exemplo de utilização]: Agrupando clientes.]
 
-.center[
-  .content-box-gray[.bold[Exemplo de utilização de agrupamento com agregação]]
-]
 
 .pull-left[
+  #### Definindo conjunto de dados sintético.
+
   
   ```python
   df = pd.DataFrame({
@@ -814,26 +1201,36 @@ class: title-slide
     'idade': [19, 19, 20, 20],
     'dinheiro': [150, 150, 100, 100]
   })
+  
+  df
+  ##      nome  idade  dinheiro
+  ## 0     ana     19       150
+  ## 1   maria     19       150
+  ## 2  felipe     20       100
+  ## 3    joão     20       100
   ```
   
-  Agrupando pela `idade` e contando os elementos
-  
+  Agrupando pela `idade`
   
   ```python
-  # Esta é a etapa de divir, da definição do Hedley
   agrupado = df.groupby('idade')
+  ```
+]
+
+&lt;div style="position: relative; top: 60px"&gt;
+.pull-right[
+
+  Agregando com `count` (Contando elementos)
   
-  ## Esta é a etapa de aplicação e junçaõ, definida pelo Hedley
+  ```python
   print(agrupado.count())
   ##        nome  dinheiro
   ## idade                
   ## 19        2         2
   ## 20        2         2
   ```
-]
 
-.pull-right[
-  Média de dinheiro por idade
+  Agregando com `mean` (Média salarial por idade)
   
   
   ```python
@@ -843,60 +1240,84 @@ class: title-slide
   ## 20    100
   ## Name: dinheiro, dtype: int64
   ```
-  
-  A idade que recebe mais dinheiro
-  
-  
-  ```python
-  agrupado['dinheiro'].sum()
-  ## idade
-  ## 19    300
-  ## 20    200
-  ## Name: dinheiro, dtype: int64
-  ```
 ]
+&lt;/div&gt;
 
 ---
 class: title-slide
 
 &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-# .center[.font170[Leitura de dados] <span>&lt;i class="fas  fa-book faa-vertical animated "&gt;&lt;/i&gt;</span>]
+# .center[.font170[Leitura e escrita de dados] <span>&lt;i class="fas  fa-book faa-vertical animated "&gt;&lt;/i&gt;</span>]
 
 ---
-# Leitura de dados
+# Leitura e escrita de dados
 
-.center[
-  Com o Pandas é possível não só realizar o processamento dos dados, mas também a leitura e escrita destes. A biblioteca suporta diversos formatos, sendo alguns deles `CSV`, `JSON` e `Excel`.
+&lt;div style="position: relative; top: 40px"&gt;
+.font130[
+Além das estruturas de dados e funcionalidades para a manipulação e processamento dos dados, o Pandas fornece ainda um conjunto de opções para a leitura e escrita de dados.
 ]
+&lt;/div&gt;
+
+&lt;br&gt;
+
+&lt;div style = "position:relative; left: 80px; top: 30px; width: 85%"&gt;
+    &lt;img src="images/python/v2021/pandas_io_readwrite.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+&lt;a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#io-tools-text-csv-hdf5"&gt;.bold.center.font50[Lista de formatos e operações de leitura/escrita do Pandas]&lt;/a&gt;
+
+---
+# .font70[.bold[Exemplo de utilização]: Leitura de dados CSV.]
 
 .pull-left[
-  ### Carregando arquivo `CSV`
+  #### Carregando dados `CSV` com `read_csv`.
+
   
   ```python
   data = pd.read_csv("data/titanic.csv", sep = ',')
+  
+  data.head(n = 3)
+  ##    PassengerId  Pclass                              Name  ...    Fare  Cabin  Embarked
+  ## 0          892       3                  Kelly, Mr. James  ...  7.8292    NaN         Q
+  ## 1          893       3  Wilkes, Mrs. James (Ellen Needs)  ...  7.0000    NaN         S
+  ## 2          894       2         Myles, Mr. Thomas Francis  ...  9.6875    NaN         Q
+  ## 
+  ## [3 rows x 11 columns]
   ```
-
-  Os dados carregados convergem para `Series` e `DataFrames`.
+  
+  Os dados carregados são representados por `Series` e `DataFrames`.
 
   
   ```python
   type(data)
   ```
   
-  
   ```
   ## "&lt;class 'pandas.core.frame.DataFrame'&gt;"
   ```
 ]
 
+&lt;div style="position: relative; top: 70px"&gt;
 .pull-right[
-  ### Salvando os dados em `CSV`
+
+  Verificando a quantidade de dados carregados com `shape`
+  
+  
+  ```python
+  data.shape  # (linhas, colunas)
+  ## (418, 11)
+  ```
+
+  &lt;br&gt;
+
+  #### Salvando `DataFrames` em `CSV` com `to_csv`.
 
   
   ```python
   data.to_csv('data/resultados.csv')
   ```
 ]
+&lt;/div&gt;
 
 ---
 class: title-slide
@@ -904,13 +1325,20 @@ class: title-slide
 
 # .center.font170[Exemplo de análise de dados]
 
+
 ---
-# Exemplo de análise de dados
+# .font70[.bold[Exemplo de utilização]: Características de meteoritos.]
 
-[Dados de 45 mil meteoritos](https://www.kaggle.com/nasa/meteorite-landings) que cairam na Terra, publicados pela NASA.
+&lt;div style="position: relative; top: -15px"&gt;
+.font110[
+Exemplo de análise de dados utilizando o conjunto de dados [Meteorite Landings](https://www.kaggle.com/nasa/meteorite-landings), disponibilizado no Kaggle pela NASA. O conjunto de dados é composto por mais de 45 mil registros, contendo diferentes informações sobre meteoritos que cairam na Terra.
+]
+&lt;/div&gt;
 
+&lt;div style="position: relative; top: -35px"&gt;
 .pull-left[
-  Carregando os dados
+  #### Carregando os dados
+
   
   ```python
   import pandas as pd
@@ -924,7 +1352,7 @@ class: title-slide
   ## "&lt;class 'pandas.core.frame.DataFrame'&gt;"
   ```
 
-  Verificando os atributos dos dados. A descrição de cada atributo está disponível na [página dos dados](https://www.kaggle.com/nasa/meteorite-landings)
+  #### Verificando os atributos dos dados. 
   
   ```python
   data.columns
@@ -933,32 +1361,42 @@ class: title-slide
   ##       dtype='object')
   ```
 ]
+&lt;/div&gt;
 
+&lt;div style="position: relative; top: -35px"&gt;
 .pull-right[
-  &lt;br&gt;&lt;br&gt;
-  Separando os dados por tipo de meteorito
+  #### Separando os dados por tipo de meteorito
+  
   
   ```python
   df_valid = data[data['nametype'] == 'Valid']
   df_relict = data[data['nametype'] == 'Relict']
   ```
   
-  Verificando as quantidades de cada tipo
+  &lt;br&gt;
+  
+  #### Verificando as quantidades de cada tipo
   
   ```python
-  print("Valid: {} | Relict: {}".format(
-    df_valid.shape[0], df_relict.shape[0]
-  ))
-  ## Valid: 45641 | Relict: 75
+  print(df_valid.shape)
+  ## (45641, 10)
+  ```
+  
+  
+  ```python
+  print(df_relict.shape)
+  ## (75, 10)
   ```
 ]
+&lt;/div&gt;
 
 ---
-# Exemplo de análise de dados
+# .font70[.bold[Exemplo de utilização]: Características de meteoritos.]
 
+&lt;div style="position: relative; top: -15px"&gt;
 .pull-left[
-  &lt;br&gt;&lt;br&gt;&lt;br&gt;
-  Verificando a massa média de cada tipo de meteorito
+  #### Verificando a massa média de cada tipo de meteorito
+  
   
   ```python
   df_groupby_nametype = data.groupby('nametype')
@@ -968,11 +1406,9 @@ class: title-slide
   ## Valid     13285.656127
   ## Name: mass, dtype: float64
   ```
-]
-
-.pull-right[
-  &lt;br&gt;
-  Façamos a contagem dos tipos de meteoritos
+  
+  #### Contando os tipos de meteoritos
+  
   
   ```python
   df_groupedby_recclass = data.groupby('recclass')
@@ -983,17 +1419,31 @@ class: title-slide
   ## Acapulcoite/lodranite     3
   ## Name: recclass, dtype: int64
   ```
-  
-  Por fim, façamos o filtro do conjunto de dados pela quantidade de massa
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: 60px"&gt;
+.pull-right[
+
+  #### Filtrando os dados pela quantidade de `mass` (Gramas)
   
   
   ```python
-  # Filtragem (Maior que 500 gramas)
-  df_gt_mass_500 = data[data['mass'] &gt; 500]
-  df_gt_mass_500.shape # Quantidade bem menor
+  df_gt_mass_500 = data.loc[data['mass'] &gt; 500]
+  df_gt_mass_500.shape
   ## (7036, 10)
   ```
+  
+  &lt;br&gt;
+  
+  #### Salvando os dados filtrados
+  
+  
+  ```python
+  df_gt_mass_500.to_csv('data/meteorite_gt_500_mass.csv')
+  ```
 ]
+&lt;/div&gt;
 
 ---
 class: title-slide
