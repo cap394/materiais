@@ -245,6 +245,8 @@ Pandas é uma biblioteca para a linguagem de programação Python, que fornece r
 import pandas as pd
 ```
 
+&gt; Para instalar a biblioteca, utilize o comando `pip install pandas`
+
 ---
 # Pandas 🐼
 
@@ -406,7 +408,7 @@ class: title-slide
 # .font70[.bold[Exemplo de utilização]: Trajetória de uso e cobertura da Terra (LULC).]
 
 .center[
-  Trajetória: Variação temporal de classes de LULC em uma determinada localização no espaço geográfico.
+  Trajetória: Variação temporal de classes de LULC de uma coleção de dados em uma determinada localização no espaço geográfico.
 ]
 
 .pull-left[
@@ -1327,7 +1329,7 @@ class: title-slide
 
 
 ---
-# .font70[.bold[Exemplo de utilização]: Características de meteoritos.]
+# .font70[.bold[Exemplo de análise]: Características de meteoritos.]
 
 &lt;div style="position: relative; top: -15px"&gt;
 .font110[
@@ -1502,69 +1504,194 @@ class: title-slide
 ]
 
 ---
-# Exemplo com Python - Gráfico de dispersão
+# .font70[.bold[Exemplo de visualização]: Biblioteca plotnine]
+
+
+
+&lt;div style="position: relative; top: 5px"&gt;
 
 .pull-left[
 
-.center.font100[Mapeamento estético]
+#### Visualizando dados com plotnine
 
 
 ```python
-from plotnine import *
-from plotnine.data import mtcars, diamonds
+from plotnine import *  # funções
+from plotnine.data import mtcars # dados de exemplo
 
-ggplot(mtcars, aes(x = 'mpg', y = 'disp'))
+print(mtcars.head(n = 3))
+##             name   mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
+## 0      Mazda RX4  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
+## 1  Mazda RX4 Wag  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
+## 2     Datsun 710  22.8    4  108.0   93  3.85  2.320  18.61   1   1     4     1
 ```
-  
-&lt;img src="./images/python/ggplot_1.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
+
+#### Colunas do conjunto de dados
+
+```python
+mtcars.columns
+## Index(['name', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am',
+##        'gear', 'carb'],
+##       dtype='object')
+```
 ]
+&lt;/div&gt;
 
 --
 
+&lt;div style="position: relative; top: 5px"&gt;
 .pull-right[
 
-.center.font100[Objeto geométrico]
+#### Definindo os dados do plot
 
-  
-  ```python
-  (ggplot(mtcars, aes(x = 'mpg', y = 'disp', color = 'factor(am)'))
-      + geom_point())
-  ```
-  
-&lt;img src="./images/python/ggplot_2.png" width="100%" height="100%" style="display: block; margin: auto;" /&gt;
-  
+
+```python
+ggplot(mtcars)
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_1.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
 ]
+&lt;/div&gt;
 
 ---
-# Exemplo com Python - Gráfico de colunas
+# .font70[.bold[Exemplo de visualização]: Biblioteca plotnine]
 
+&lt;div style="position: relative; top: 5px"&gt;
 .pull-left[
 
-.center.font100[Mapeamento estético e objeto geométrico]
+#### Visualizando dados com plotnine
 
-  
-  ```python
-  (ggplot(data = diamonds) + 
-    stat_count(mapping = aes(x = 'cut')))
-  ```
-  
-&lt;img src="./images/python/ggplot_3.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
 
+```python
+from plotnine import *  # funções
+from plotnine.data import mtcars # dados de exemplo
+
+print(mtcars.head(n = 3))
+##             name   mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
+## 0      Mazda RX4  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
+## 1  Mazda RX4 Wag  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
+## 2     Datsun 710  22.8    4  108.0   93  3.85  2.320  18.61   1   1     4     1
+```
+
+#### Colunas do conjunto de dados
+
+```python
+mtcars.columns
+## Index(['name', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am',
+##        'gear', 'carb'],
+##       dtype='object')
+```
 ]
+&lt;/div&gt;
 
---
+&lt;div style="position: relative; top: 5px"&gt;
 .pull-right[
-.center.font100[Sistema de coordenadas]
 
-  
-  ```python
-  (ggplot(data = diamonds) + 
-      stat_count(mapping = aes(x = 'cut')) + 
-      coord_flip())
-  ```
-  
-&lt;img src="./images/python/ggplot_4.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
+#### Mapeamento estético
+
+
+```python
+ggplot(mtcars, aes(x = 'mpg', y = 'disp'))
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_2.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
 ]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de visualização]: Biblioteca plotnine]
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-left[
+
+#### Visualizando dados com plotnine
+
+
+```python
+from plotnine import *  # funções
+from plotnine.data import mtcars # dados de exemplo
+
+print(mtcars.head(n = 3))
+##             name   mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
+## 0      Mazda RX4  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
+## 1  Mazda RX4 Wag  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
+## 2     Datsun 710  22.8    4  108.0   93  3.85  2.320  18.61   1   1     4     1
+```
+
+#### Colunas do conjunto de dados
+
+```python
+mtcars.columns
+## Index(['name', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am',
+##        'gear', 'carb'],
+##       dtype='object')
+```
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-right[
+
+#### Adição de objeto geométrico
+
+
+```python
+(
+  ggplot(mtcars, aes(x = 'mpg', y = 'disp'))
+    + geom_point()
+)
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_3.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de visualização]: Biblioteca plotnine]
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-left[
+
+#### Cores no objeto geométrico
+
+
+```python
+(
+  ggplot(mtcars, aes(x = 'mpg', y = 'disp', color = 'factor(cyl)'))
+    + geom_point()
+)
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_4.png" width="90%" height="90%" style="display: block; margin: auto;" /&gt;
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-right[
+
+#### Adicionando outros objetos geométricos
+
+
+```python
+(
+  ggplot(mtcars, aes(x = 'mpg', y = 'disp', color = 'factor(cyl)'))
+    + geom_point() + geom_line()
+)
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_5.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
+]
+&lt;/div&gt;
 
 ---
 class: title-slide
