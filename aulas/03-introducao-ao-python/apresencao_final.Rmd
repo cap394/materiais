@@ -153,7 +153,7 @@ class: title-slide
 ---
 # Estrutura de controle de decisão
 
-.font140[
+.font130[
 As estruturas de controle de decisão são utilizadas para determinar quais ações/códigos serão executados com base na verificação de testes lógicos.
 ]
 
@@ -377,7 +377,7 @@ class: title-slide
 .pull-right[
   #### Recuperando dados
 
-  Pode-se recuperar os dados com o operador .bold[[]].
+  Pode-se recuperar os dados com o operador .bold[[]]
   
   ```
   serie[nome da linha]
@@ -427,13 +427,13 @@ class: title-slide
   <!-- .center.bold[Mais formas de acessar os dados] -->
   #### Mais formas de acessar os dados
   
-  Recuperando os primeiros valores com `head`.
+  Recuperando os primeiros valores com `head`
   
   ```{python}
   trajectory.head(n = 2) # padrão (n = 5)
   ```
   
-  Recuperando os últimos valores com `tail`.
+  Recuperando os últimos valores com `tail`
   
   ```{python}
   trajectory.tail(n = 2)
@@ -565,7 +565,7 @@ class: title-slide
 ]
 
 .pull-left[
-  .center.bold[`DataFrame` com SITS de vários pontos.]
+  .center.bold[`DataFrame` com SITS de vários pontos]
 
   ```{python}
   sits = pd.DataFrame({
@@ -585,7 +585,7 @@ class: title-slide
 
 <div style="position: relative; top: 40px">
 .pull-right[
-  .center[Visão geral dos dados com `describe`.]
+  .center[Visão geral dos dados com `describe`]
   
   ```{python}
   sits.describe() # Informações estatísticas
@@ -645,15 +645,15 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 </div>
 
 .pull-right[
-  #### Selecionando dados pelo `nome` das linhas e colunas.
+  #### Selecionando dados pelo `nome` das linhas e colunas
 
-  Recuperando a linha de `nome` "9".
+  Recuperando a linha de `nome` "9"
   
   ```{python}
   print(df.loc[9])
   ```
 
-  Recuperando a linha de `nome` 9 e a coluna de `nome` "idade".
+  Recuperando a linha de `nome` 9 e a coluna de `nome` "idade"
   
   ```{python}
   print(df.loc[9, 'idade'])
@@ -684,15 +684,15 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 </div>
 
 .pull-right[
-  #### Selecionando dados pela `posição` das linhas e colunas.
+  #### Selecionando dados pela `posição` das linhas e colunas
 
-  Recuperando a linha de `posição` "1".
+  Recuperando a linha de `posição` "1"
   
   ```{python}
   print(df.iloc[2])
   ```
 
-  Recuperando a linha de `posição` "1" e a coluna de `posição` "2".
+  Recuperando a linha de `posição` "1" e a coluna de `posição` "2"
   
   ```{python}
   print(df.iloc[1, 2])
@@ -723,15 +723,15 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 </div>
 
 .pull-right[
-  #### Selecionando dados pela `posição` e `nome`.
+  #### Selecionando dados pela `posição` e `nome`
 
-  Recuperando a linha de `nome` "9" com .bold[loc].
+  Recuperando a linha de `nome` "9" com .bold[loc]
   
   ```{python}
   print(df.loc[9])
   ```
 
-  Recuperando a linha de `posição` "1" com .bold[iloc].
+  Recuperando a linha de `posição` "1" com .bold[iloc]
   
   ```{python}
   print(df.iloc[2])
@@ -747,7 +747,7 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 
 <div style="position: relative; top: 70px">
 .pull-left[
-  #### `DataFrame` com SITS de vários pontos.
+  #### `DataFrame` com SITS de vários pontos
 
   ```{python}
   print(sits)
@@ -759,13 +759,13 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 .pull-right[
   #### Selecionando dados com intervalos
 
-  Recuperando intervalo de nomes das linhas.
+  Recuperando intervalo de nomes das linhas
   
   ```{python}
   print(sits.loc["2017-01-01":"2017-01-17", "P2_NDVI"])
   ```
 
-  Recuperando intervalo de posições das linhas.
+  Recuperando intervalo de posições das linhas
   
   ```{python}
   print(sits.iloc[0:2, 1])
@@ -783,7 +783,7 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 .pull-left[
   #### Indexação booleana
 
-  É possível fazer o filtro de dados com um índice booleano.
+  É possível fazer o filtro de dados com um índice booleano
 
   ```{python}
   df = pd.DataFrame({
@@ -797,7 +797,7 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 
 <div style="position: relative; top: 24px">
 .pull-right[
-  O filtro dos dados pode ser feito com .bold[loc] e .bold[iloc].
+  O filtro dos dados pode ser feito com .bold[loc] e .bold[iloc]
   
   #### loc
   
@@ -823,14 +823,14 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 .pull-left[
   #### Expressões booleanas
   
-  Testes lógicos podem ser adicionados no filtro para a geração das listas booleanas. 
+  Testes lógicos podem ser adicionados no filtro para a geração das listas booleanas
   
   ```
       dataframe.loc[(teste 1)]
   ```
   
   <br>
-  Filtrando valores maiores que "5".
+  Filtrando valores maiores que "5"
   ```{python}
   df.loc[df['valor'] > 5]
   ```
@@ -839,7 +839,7 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 <div style="position: relative; top: 70px">
 .pull-right[
 
-  A expressão retorna os valores booleanos do teste feito.
+  A expressão retorna os valores booleanos do teste feito
   ```{python}
   df['valor'] > 5
   ```
@@ -871,12 +871,12 @@ Os operadores lógicos são:
 <div style="position: relative; top: 45px">
 .pull-right[
 
-  Filtrando valores maiores ou igual a 5 **e** menores que 12. 
+  Filtrando valores maiores ou igual a 5 **e** menores que 12
   ```{python}
   df.loc[(df['valor'] > 5) & (df['valor'] < 12)]
   ```
   
-  O método `query` pode ser mais amigável.
+  O método `query` pode ser mais amigável
   ```{python}
   df.query('valor > 5 & valor < 12')
   ```
@@ -1022,7 +1022,7 @@ class: title-slide
 
 
 .pull-left[
-  #### Definindo conjunto de dados sintético.
+  #### Definindo conjunto de dados sintético
 
   ```{python}
   df = pd.DataFrame({
@@ -1083,7 +1083,7 @@ Além das estruturas de dados e funcionalidades para a manipulação e processam
 # .font70[.bold[Exemplo de utilização]: Leitura de dados CSV.]
 
 .pull-left[
-  #### Carregando dados `CSV` com `read_csv`.
+  #### Lendo e escrevendo dados `CSV`
 
   ```{python}
   data = pd.read_csv("data/titanic.csv", sep = ',')
@@ -1112,7 +1112,7 @@ Além das estruturas de dados e funcionalidades para a manipulação e processam
 
   <br>
 
-  #### Salvando `DataFrames` em `CSV` com `to_csv`.
+  Escrevendo os dados em um arquivo `CSV`
 
   ```{python}
   data.to_csv('data/resultados.csv')
@@ -1234,7 +1234,7 @@ class: title-slide
 ---
 # Pacotes de visualização
 
-## As bibliotecas de visualização de dados `ggplot2` e `plotnine` são baseadas na obra .bold[The Grammar of Graphics], a qual apresenta uma grámatica para elaboração de gráficos. Tal gramática é composta por camadas, as quais descrevem os componentes do gráfico.
+### As bibliotecas de visualização de dados `ggplot2` e `plotnine` são baseadas na obra .bold[The Grammar of Graphics], a qual apresenta uma grámatica para elaboração de gráficos. Tal gramática é composta por camadas, as quais descrevem os componentes do gráfico.
 
 .pull-left[
 
