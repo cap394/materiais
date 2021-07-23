@@ -368,7 +368,8 @@ class: title-slide
   
   #### `Series` com índice
   ```{python}
-  series = pd.Series([1, 2, 3], [9, 'ultimo', 'tres'])
+  series = pd.Series([1, 2, 3], 
+                     index = [9, 'ultimo', 'tres'])
   print(series)
   ```
 ]
@@ -535,14 +536,8 @@ class: title-slide
   ```
 ]
 
-<div style="position: relative; top: -30px">
+<div style="position: relative; top: 30px">
 .pull-right[
-  #### Colunas disponíveis
-
-  ```{python}
-  print(df.columns)
-  ```
-
   #### Recuperando uma coluna
   
   ```{python}
@@ -561,7 +556,7 @@ class: title-slide
 # .font70[.bold[Exemplo de utilização]: Séries temporais de imagens de satélite (SITS).]
 
 .center[
-  SITS: Variação temporal de bandas espectrais em uma determinada localização no espaço geográfico.
+  SITS: Variação temporal de valores de bandas espectrais em uma determinada localização no espaço geográfico.
 ]
 
 .pull-left[
@@ -653,7 +648,7 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
   print(df.loc[9])
   ```
 
-  Recuperando a linha de `nome` 9 e a coluna de `nome` "idade"
+  Recuperando a linha de `nome` "9" e a coluna de `nome` "idade"
   
   ```{python}
   print(df.loc[9, 'idade'])
@@ -686,16 +681,16 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
 .pull-right[
   #### Selecionando dados pela `posição` das linhas e colunas
 
-  Recuperando a linha de `posição` "1"
+  Recuperando a linha de `posição` "2"
   
   ```{python}
   print(df.iloc[2])
   ```
 
-  Recuperando a linha de `posição` "1" e a coluna de `posição` "2"
+  Recuperando a linha de `posição` "2" e a coluna de `posição` "2"
   
   ```{python}
-  print(df.iloc[1, 2])
+  print(df.iloc[2, 2])
   ```
 ]
 
@@ -731,7 +726,7 @@ Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permite
   print(df.loc[9])
   ```
 
-  Recuperando a linha de `posição` "1" com .bold[iloc]
+  Recuperando a linha de `posição` "2" com .bold[iloc]
   
   ```{python}
   print(df.iloc[2])
@@ -873,12 +868,12 @@ Os operadores lógicos são:
 
   Filtrando valores maiores ou igual a 5 **e** menores que 12
   ```{python}
-  df.loc[(df['valor'] > 5) & (df['valor'] < 12)]
+  df.loc[(df['valor'] >= 5) & (df['valor'] < 12)]
   ```
   
   O método `query` pode ser mais amigável
   ```{python}
-  df.query('valor > 5 & valor < 12')
+  df.query('valor >= 5 & valor < 12')
   ```
 ]
 
@@ -1166,8 +1161,8 @@ Exemplo de análise de dados utilizando o conjunto de dados [Meteorite Landings]
   #### Separando os dados por tipo de meteorito
   
   ```{python}
-  df_valid = data[data['nametype'] == 'Valid']
-  df_relict = data[data['nametype'] == 'Relict']
+  df_valid = data.loc[data['nametype'] == 'Valid']
+  df_relict = data.loc[data['nametype'] == 'Relict']
   ```
   
   <br>
@@ -1195,7 +1190,7 @@ Exemplo de análise de dados utilizando o conjunto de dados [Meteorite Landings]
   df_groupby_nametype['mass'].mean()
   ```
   
-  #### Contando os tipos de meteoritos
+  #### Contando meteoritos por classe
   
   ```{python}
   df_groupedby_recclass = data.groupby('recclass')
