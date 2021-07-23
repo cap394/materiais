@@ -9,4 +9,4 @@
 ## Aula - 19/07/2021
 
 - Introdução ao Python para análise de dados: [Apresentação](#)
-- Exercícios práticos de análise de dados em Python: [Kaggle](#)
+- Exercícios práticos de análise de dados em Python: [Kaggle](https://www.kaggle.com/phelpsmemo/intro-ds-python-23-07)
