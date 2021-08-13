@@ -10,3 +10,8 @@
 
 - Introdução ao Python para análise de dados: [Apresentação](https://cap394.netlify.app/aulas/03-introducao-ao-python)
 - Exercícios práticos de análise de dados em Python: [Kaggle](https://www.kaggle.com/phelpsmemo/intro-ds-python-23-07)
+
+## Aula - 13/08/2021
+
+- Exercício prático de análise de dados: [Apresentação](aulas/04_exercicio/cap-394_exercicio.pdf);
+- Exercício prático de análise de dados: [Kaggle](https://www.kaggle.com/c/cap-394-exercicio-de-analise-de-dados);
