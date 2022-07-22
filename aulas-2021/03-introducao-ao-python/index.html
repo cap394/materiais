@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introdução à análise de dados</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Adriano Pereira, Felipe Carvalho &amp; Felipe Menino" />
+    <meta name="date" content="2021-07-23" />
+    <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="scrollable.css" type="text/css" />
+    <link rel="stylesheet" href="mtheme_max.css" type="text/css" />
+    <link rel="stylesheet" href="fonts_mtheme_max.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: title-slide   
+&lt;a href="https://github.com/dataAt/intro-analise-de-dados-apresentacao" class="github-corner" aria-label="Código no Github"&gt;&lt;svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"&gt;&lt;path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"&gt;&lt;/path&gt;&lt;path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"&gt;&lt;/path&gt;&lt;path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;style&gt;.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}&lt;/style&gt;
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .font200[Introdução à análise de dados] 
+
+&lt;br&gt;&lt;br&gt;
+### Adriano Pereira, Felipe Carvalho &amp; Felipe Menino
+### Julho 2021
+
+---
+# Agenda
+
+&lt;br&gt;&lt;br&gt;
+
+
+- .font120[&lt;s&gt;Introdução ao R&lt;/s&gt; <span>&lt;i class="fab  fa-r-project faa-float animated faa-slow " style=" color:steelblue;"&gt;&lt;/i&gt;</span>]
+
+  - .font120[&lt;s&gt;Tidyverse&lt;/s&gt; <span class=" faa-float animated faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">&lt;img src="./images/2_r_img/logo_tidyverse_menor.png" style="height:1em; width:auto; "/&gt;</span>]
+
+- .font120[Introdução ao Python <span>&lt;i class="fab  fa-python faa-float animated faa-slow "&gt;&lt;/i&gt;</span>]
+
+  - .font120[Pandas <span class=" faa-float animated faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">&lt;img src="./images/python/pandas-logo-300.png" style="height:1em; width:auto; "/&gt;</span>]
+
+- .font120[Visualização de dados <span class=" faa-float animated faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">&lt;img src="./images/2_r_img/ggplot2_logo_menor.jpeg" style="height:1em; width:auto; "/&gt;</span>]
+
+&lt;br&gt;
+
+&lt;!-- Inicio da parte de Python--&gt;
+---
+
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center.font170[Introdução ao Python <span>&lt;i class="fab  fa-python faa-float animated faa-slow "&gt;&lt;/i&gt;</span>]
+---
+# Introdução ao Python
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.font150[
+Python é uma linguagem de programação multiparadigma, que através de uma sintaxe simples, permite a seus utilizadores focar na solução de problemas, não os impedindo com complexidades além do necessário.
+]
+
+&lt;br&gt;&lt;br&gt;
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center[.font170[Conceitos básicos da linguagem]]
+
+---
+# Comandos básicos da linguagem
+
+.pull-left[
+  #### Declarações de variáveis
+  
+  A declaração de variáveis no Python é feita com o sinal .bold[=]
+  
+  ```
+  variavel = valor da variável
+  ```
+  
+  Os valores das variáveis podem ser de diferentes tipos:
+
+  
+  ```python
+  inteiro = 123
+  flutuante = 1.1234
+  booleano = True
+  lista = [1, 2, 3, 4, 5]
+  dicionario = {'chave': 'valor'}
+  string = 'Um texto legal'
+  ```
+]
+
+.pull-right[
+  #### Manipulação de números (Inteiro e Float)
+  
+  
+  ```python
+  inteiro + 2 # 125
+  
+  inteiro * 2 # 246
+  
+  flutuante / 2 # 0.5617
+  ```
+  
+  #### Manipulação de listas
+
+  
+  ```python
+  lista[0] # 1 (Primeiro valor)
+  
+  lista[0:3] # Do valor `0` à `2`
+  
+  lista[-1] # Último valor
+  ```
+  
+  #### Manipulação de dicionário (Chave-Valor)
+  
+  
+  ```python
+  dicionario['chave'] # 'valor'
+  ```
+]
+
+---
+# Estrutura de controle de decisão
+
+.font130[
+As estruturas de controle de decisão são utilizadas para determinar quais ações/códigos serão executados com base na verificação de testes lógicos.
+]
+
+.pull-left[
+**if**
+
+
+```python
+if (2 &gt; 1):
+  print("Dois é maior que um!")
+## Dois é maior que um!
+```
+
+**else**
+
+
+```python
+if (2 &lt; 1):
+  print('Dois é menor que um')
+else:
+  print('Dois é maior que um')
+## Dois é maior que um
+```
+]
+
+.pull-right[
+
+&lt;br&gt;
+
+**elif**
+
+
+```python
+if (1 &gt; 1):
+  print('Um é maior que um')
+elif(1 &gt; 0.5):
+  print('Um é maior que meio')
+## Um é maior que meio
+```
+]
+
+---
+# Estrutura de repetição
+
+.font130[
+Estruturas de repetição permitem que um determinado bloco de código seja executado por diversas vezes.
+]
+
+.pull-left[
+  **Iterando com testes lógicos (while)**
+  
+  
+  ```python
+  i = 0
+  while i &lt; 5:
+    print(i)
+    i += 1
+  ## 0
+  ## 1
+  ## 2
+  ## 3
+  ## 4
+  ```
+]
+
+&lt;div style="position: relative; top: -70px"&gt;
+.pull-right[
+  **Iterando em elementos (for-each)**
+
+  Iterando em uma lista de valores:
+  
+  ```python
+    for i in [11, 22]:
+      print(i)
+    
+    # 1° Iteração (i = 11)
+    # 2° Iteração (i = 22)
+  ```
+
+  Iterando em um intervalo de valores:
+  
+  ```python
+    for i in range(0, 9, 3): # range(inicio, fim, passo)
+      print(i)
+  
+    # 1° Iteração (i = 0)
+    # 2° Iteração (i = 3)
+    # 3° Iteração (i = 6)
+  ```
+]
+&lt;/div&gt;
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center[.font170[Pandas] 🐼] 
+
+---
+# Pandas 🐼
+
+&lt;br&gt;
+.font130[
+Pandas é uma biblioteca para a linguagem de programação Python, que fornece recursos rápidos, poderosos, flexíveis e .bold[fáceis de usar] para a manipulação e análise de dados.
+]
+
+&lt;br&gt;
+
+.bold[Para importar a biblioteca, utilize:]
+
+
+```python
+import pandas as pd
+```
+
+&gt; Para instalar a biblioteca, utilize o comando `pip install pandas`
+
+---
+# Pandas 🐼
+
+&lt;br&gt;
+
+.center[.font160[.bold[Qual tipo de dado é possível manipular com `Pandas` ?]]]
+
+&lt;br&gt;
+
+.center[
+.font130[
+  As funcionalidades do `Pandas` ajudam na exploração, limpeza e processamento de dados tabulares, como os armazenados em planilhas Excel, CSV ou bancos de dados tabulares.
+]
+]
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center[.font160[Estruturas de dados] 🎲]
+
+---
+# Estruturas de dados 🎲
+
+&lt;br&gt;&lt;br&gt;
+.pull-left[
+
+.center[
+.font200[<span class=" faa-float animated faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">&lt;img src="images/python/v2021/pandas_estruturas-de-dados_series.png" style="height:5em; width:auto; "/&gt;</span>]
+]
+.center[.font200[.bold[Series]]]
+]
+
+.pull-right[
+.center[
+.font200[<span class=" faa-float animated faa-slow " style=" display: -moz-inline-stack; display: inline-block; transform: rotate(0deg);">&lt;img src="images/python/v2021/pandas_estruturas-de-dados_dataframes.png" style="height:5em; width:auto; "/&gt;</span>]
+]
+.center[.font200[.bold[DataFrames]]]
+]
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font150[.bold[Series] são estruturas de dados unidimensionais que permitem o armazenamento de sequências de valores.]
+]
+
+
+&lt;div style = "position:relative; left: 190px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series1.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font140[Cada uma das linhas são associadas a .bold[nomes] (ou índices), que podem ser utilizados para a busca e recuperação dos dados.]
+]
+
+&lt;div style = "position:relative; left: 190px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series2.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font140[Diferentes tipos de dados podem ser armazenados] .font100[(e.g. Inteiro, String, Float)] .font140[e utilizados para a criação dos índices de uma `Series`.]
+]
+
+&lt;div style = "position:relative; left: 150px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series3.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font140[Diferentes tipos de dados podem ser armazenados] .font100[(e.g. Inteiro, String, Float)] .font140[e utilizados para a criação dos índices de uma `Series`.]
+]
+
+&lt;div style = "position:relative; left: 150px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series4.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font140[Diferentes tipos de dados podem ser armazenados] .font100[(e.g. Inteiro, String, Float)] .font140[e utilizados para a criação dos índices de uma `Series`.]
+]
+
+&lt;div style = "position:relative; left: 150px; top: -20px; width: 70%"&gt;
+  &lt;img src="images/python/v2021/pandas_series5.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.content-box-gray[.bold[Exemplos de manipulação das Series]]
+]
+
+.pull-left[
+  #### Criando uma `Series`
+  
+  ```python
+  series = pd.Series([1, 2]) 
+  print(series)
+  ## 0    1
+  ## 1    2
+  ## dtype: int64
+  ```
+  
+  #### `Series` com índice
+  
+  ```python
+  series = pd.Series([1, 2, 3], 
+                     index = [9, 'ultimo', 'tres'])
+  print(series)
+  ## 9         1
+  ## ultimo    2
+  ## tres      3
+  ## dtype: int64
+  ```
+]
+
+&lt;div style="position: relative; top: -30px"&gt;
+.pull-right[
+  #### Recuperando dados
+
+  Pode-se recuperar os dados com o operador .bold[[]]
+  
+  ```
+  serie[nome da linha]
+  ```
+  
+  Recuperação de uma linha única:
+  
+  
+  ```python
+  series[9]
+  ## 1
+  ```
+
+  Intervalos de valores também são permitidos:
+
+  
+  ```python
+  series[9: 'tres']
+  ## 9         1
+  ## ultimo    2
+  ## tres      3
+  ## dtype: int64
+  ```
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de utilização]: Trajetória de uso e cobertura da Terra (LULC).]
+
+.center[
+  Trajetória: Variação temporal de classes de LULC de uma coleção de dados em uma determinada localização no espaço geográfico.
+]
+
+.pull-left[
+  &lt;!-- .center.bold[Criando a trajetória como uma `Series`] --&gt;
+  #### Criando a trajetória como uma `Series`
+
+  
+  ```python
+  trajectory = pd.Series([
+    "Pastagem", "Pastagem", 
+    "Outras Lavouras Temporárias", 
+    "Soja", "Soja"
+  ], index = [2014, 2015, 2016, 2017, 2018])
+  
+  trajectory
+  ## 2014                       Pastagem
+  ## 2015                       Pastagem
+  ## 2016    Outras Lavouras Temporárias
+  ## 2017                           Soja
+  ## 2018                           Soja
+  ## dtype: object
+  ```
+  
+  .bold.center.font50[
+    Trajetória extraída da localização (-10.710, -55.612) com o serviço &lt;a href="https://github.com/brazil-data-cube/wlts"&gt;WLTS&lt;/a&gt; (Coleção MapBiomas 5).
+  ]
+]
+
+.pull-right[
+  &lt;!-- .center.bold[Mais formas de acessar os dados] --&gt;
+  #### Mais formas de acessar os dados
+  
+  Recuperando os primeiros valores com `head`
+  
+  
+  ```python
+  trajectory.head(n = 2) # padrão (n = 5)
+  ## 2014    Pastagem
+  ## 2015    Pastagem
+  ## dtype: object
+  ```
+  
+  Recuperando os últimos valores com `tail`
+  
+  
+  ```python
+  trajectory.tail(n = 2)
+  ## 2017    Soja
+  ## 2018    Soja
+  ## dtype: object
+  ```
+]
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.content-box-gray[.bold[Questão]: Como tratar os casos em que há mais colunas ?]
+]
+
+&lt;div style = "position:relative; left: 100px; top: -5px; width: 80%"&gt;
+  &lt;img src="images/python/v2021/pandas_series6.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.content-box-gray[.bold[Questão]: Como tratar os casos em que há mais colunas ?]
+]
+
+&lt;div style = "position:relative; left: 100px; top: -5px; width: 80%"&gt;
+  &lt;img src="images/python/v2021/pandas_series7.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+.font130[.bold[DataFrames] são estruturas de dados bidimensionais, representando tabelas, formadas por conjuntos de Series. É a estrutura de dados principal do Pandas.
+]]
+
+&lt;div style = "position:relative; left: 120px; top: -5px; width: 77%"&gt;
+  &lt;img src="images/python/v2021/pandas_dataframe1.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+  .content-box-gray[.bold[Exemplo de manipulação dos DataFrames]]
+]
+
+.pull-left[
+  #### Criando um DataFrame
+  
+  
+  ```python
+  df = pd.DataFrame([[1, 2, 3, 4], [11, 12, 13, 14]])
+  print(df)
+  ##     0   1   2   3
+  ## 0   1   2   3   4
+  ## 1  11  12  13  14
+  ```
+  
+  #### DataFrame com índice
+  
+  ```python
+  df = pd.DataFrame([[1, 2, 3, 4], [11, 12, 13, 14]], 
+                      index = ['um', 'dois'])
+  print(df)
+  ##        0   1   2   3
+  ## um     1   2   3   4
+  ## dois  11  12  13  14
+  ```
+]
+
+&lt;div style="position: relative; top: 80px"&gt;
+.pull-right[
+  #### Índices e colunas
+  
+  
+  ```python
+  df = pd.DataFrame([[1, 2, 3, 4], [11, 12, 13, 14]], 
+                    index = ['um', 'dois'], 
+                    columns = ['a', 'b', 'c', 'd'])
+  print(df)
+  ##        a   b   c   d
+  ## um     1   2   3   4
+  ## dois  11  12  13  14
+  ```
+]
+&lt;/div&gt;
+
+---
+# Estruturas de dados 🎲
+
+.center[
+  .content-box-gray[.bold[Exemplo de manipulação dos DataFrames]]
+]
+
+.pull-left[
+
+  #### Recuperando dados
+  
+  Como as `Series`, nos `DataFrames` a recuperação básica de dados ocorre com o operador .bold[[]].
+  
+  ```
+  dataframe[nome da coluna]
+  ```
+
+  #### DataFrame de exemplo
+  
+  ```python
+  df = pd.DataFrame([[1, 2, 3, 4], [11, 12, 13, 14]], 
+                  index = ['um', 'dois'], 
+                  columns = ['a', 'b', 'c', 'd'])
+  print(df)
+  ##        a   b   c   d
+  ## um     1   2   3   4
+  ## dois  11  12  13  14
+  ```
+]
+
+&lt;div style="position: relative; top: 30px"&gt;
+.pull-right[
+  #### Recuperando uma coluna
+  
+  
+  ```python
+  df['a'] # &lt;class 'pandas.core.series.Series'&gt;
+  ## um       1
+  ## dois    11
+  ## Name: a, dtype: int64
+  ```
+  
+  #### Recuperando mais colunas
+  
+  
+  ```python
+  df[['a', 'b']] # &lt;class 'pandas.core.frame.DataFrame'&gt;
+  ##        a   b
+  ## um     1   2
+  ## dois  11  12
+  ```
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de utilização]: Séries temporais de imagens de satélite (SITS)]
+
+.center[
+  SITS: Variação temporal de valores de bandas espectrais em uma determinada localização no espaço geográfico.
+]
+
+.pull-left[
+  .center.bold[`DataFrame` com SITS de vários pontos]
+
+  
+  ```python
+  sits = pd.DataFrame({
+    "P1_NDVI": [0.578, 0.653, 0.691, 0.451], # Ponto 1
+    "P2_NDVI": [0.592, 0.617, 0.580, 0.578], # Ponto 2
+    "P3_NDVI": [0.574, 0.591, 0.570, 0.385]  # Ponto 3
+  }, index = ["2017-01-01", "2017-01-17", 
+              "2017-02-02", "2017-02-18"])
+  
+  sits
+  ##             P1_NDVI  P2_NDVI  P3_NDVI
+  ## 2017-01-01    0.578    0.592    0.574
+  ## 2017-01-17    0.653    0.617    0.591
+  ## 2017-02-02    0.691    0.580    0.570
+  ## 2017-02-18    0.451    0.578    0.385
+  ```
+  
+  .bold.center.font50[
+    SITS extraídas com o serviço &lt;a href="https://github.com/brazil-data-cube/wtss.py"&gt;WTSS&lt;/a&gt; (Coverage CBERS-4/AWFI).
+  ]
+]
+
+&lt;div style="position: relative; top: 40px"&gt;
+.pull-right[
+  .center[Visão geral dos dados com `describe`]
+  
+  
+  ```python
+  sits.describe() # Informações estatísticas
+  ##         P1_NDVI   P2_NDVI   P3_NDVI
+  ## count  4.000000  4.000000  4.000000
+  ## mean   0.593250  0.591750  0.530000
+  ## std    0.105819  0.017933  0.097094
+  ## min    0.451000  0.578000  0.385000
+  ## 25%    0.546250  0.579500  0.523750
+  ## 50%    0.615500  0.586000  0.572000
+  ## 75%    0.662500  0.598250  0.578250
+  ## max    0.691000  0.617000  0.591000
+  ```
+]
+&lt;/div&gt;
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center.font140[Seleção e filtro de dados com Pandas]
+
+&lt;!-- No slide após este, inserir uma figura mostrando o processo de manipulação dos dados. (Pegando de uma tabela completa e entendendo somente uma parte, filtro e etc...) --&gt;
+
+---
+# Seleção e filtro de dados com Pandas
+
+.font120[Durante o processo de análise, faz-se necessário a realização de seleção e filtro dos dados para a captura de comportamentos específicos. O Pandas fornece diferentes métodos para essas operações.]
+
+&lt;!-- &gt; No `Pandas` estão disponíveis [diferentes métodos](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#indexing-and-selecting-data) para essas operações. --&gt;
+
+--
+## loc e iloc
+
+Dentre os métodos disponíveis, tem-se o .bold[loc] e o .bold[iloc] que permitem a seleção e filtro de dados armazenados em `Series` e `DataFrames`.
+
+&lt;br&gt;
+.center[
+  | Series                    |           DataFrames                        |
+  |---------------------------|---------------------------------------------|
+  |  \.loc[Nome da linha]     | \.loc[Nome da linha,  Nome da coluna]       |
+  |  \.iloc[Posição da linha] | \.iloc[posição da linha, posição da coluna] |
+]
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Exemplo de utilização do loc]]
+]
+
+&lt;div style="position: relative; top: 50px"&gt;
+.pull-left[
+  #### DataFrame de exemplo
+  
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['Joana', 'Maria', 'Josefa'],
+    'idade': [15, 18, 21],
+    'nota': [8, 9, 10]
+  }, index = [7, 8, 9])
+  
+  df
+  ##      nome  idade  nota
+  ## 7   Joana     15     8
+  ## 8   Maria     18     9
+  ## 9  Josefa     21    10
+  ```
+]
+&lt;/div&gt;
+
+.pull-right[
+  #### Selecionando dados pelo `nome` das linhas e colunas
+
+  Recuperando a linha de `nome` "9"
+  
+  
+  ```python
+  print(df.loc[9])
+  ## nome     Josefa
+  ## idade        21
+  ## nota         10
+  ## Name: 9, dtype: object
+  ```
+
+  Recuperando a linha de `nome` "9" e a coluna de `nome` "idade"
+  
+  
+  ```python
+  print(df.loc[9, 'idade'])
+  ## 21
+  ```
+]
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Exemplo de utilização do iloc]]
+]
+
+&lt;div style="position: relative; top: 50px"&gt;
+.pull-left[
+  #### DataFrame de exemplo
+  
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['Joana', 'Maria', 'Josefa'],
+    'idade': [15, 18, 21],
+    'nota': [8, 9, 10]
+  }, index = [7, 8, 9])
+  
+  df
+  ##      nome  idade  nota
+  ## 7   Joana     15     8
+  ## 8   Maria     18     9
+  ## 9  Josefa     21    10
+  ```
+]
+&lt;/div&gt;
+
+.pull-right[
+  #### Selecionando dados pela `posição` das linhas e colunas
+
+  Recuperando a linha de `posição` "2"
+  
+  
+  ```python
+  print(df.iloc[2])
+  ## nome     Josefa
+  ## idade        21
+  ## nota         10
+  ## Name: 9, dtype: object
+  ```
+
+  Recuperando a linha de `posição` "2" e a coluna de `posição` "1"
+  
+  
+  ```python
+  print(df.iloc[2, 1])
+  ## 21
+  ```
+]
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Comparação entre loc e iloc]]
+]
+
+&lt;div style="position: relative; top: 50px"&gt;
+.pull-left[
+  #### DataFrame de exemplo
+  
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['Joana', 'Maria', 'Josefa'],
+    'idade': [15, 18, 21],
+    'nota': [8, 9, 10]
+  }, index = [7, 8, 9])
+  
+  df
+  ##      nome  idade  nota
+  ## 7   Joana     15     8
+  ## 8   Maria     18     9
+  ## 9  Josefa     21    10
+  ```
+]
+&lt;/div&gt;
+
+.pull-right[
+  #### Selecionando dados pela `posição` e `nome`
+
+  Recuperando a linha de `nome` "9" com .bold[loc]
+  
+  
+  ```python
+  print(df.loc[9])
+  ## nome     Josefa
+  ## idade        21
+  ## nota         10
+  ## Name: 9, dtype: object
+  ```
+
+  Recuperando a linha de `posição` "2" com .bold[iloc]
+  
+  
+  ```python
+  print(df.iloc[2])
+  ## nome     Josefa
+  ## idade        21
+  ## nota         10
+  ## Name: 9, dtype: object
+  ```
+]
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Comparação entre loc e iloc]]
+]
+
+&lt;div style="position: relative; top: 70px"&gt;
+.pull-left[
+  #### `DataFrame` com SITS de vários pontos
+
+  
+  ```python
+  print(sits)
+  ##             P1_NDVI  P2_NDVI  P3_NDVI
+  ## 2017-01-01    0.578    0.592    0.574
+  ## 2017-01-17    0.653    0.617    0.591
+  ## 2017-02-02    0.691    0.580    0.570
+  ## 2017-02-18    0.451    0.578    0.385
+  ```
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: -10px"&gt;
+.pull-right[
+  #### Selecionando dados com intervalos
+
+  Recuperando intervalo de nomes das linhas
+  
+  
+  ```python
+  print(sits.loc["2017-01-01":"2017-01-17", "P2_NDVI"])
+  ## 2017-01-01    0.592
+  ## 2017-01-17    0.617
+  ## Name: P2_NDVI, dtype: float64
+  ```
+
+  Recuperando intervalo de posições das linhas
+  
+  
+  ```python
+  print(sits.iloc[0:2, 1])
+  ## 2017-01-01    0.592
+  ## 2017-01-17    0.617
+  ## Name: P2_NDVI, dtype: float64
+  ```
+]
+&lt;/div&gt;
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Filtro de dados]]
+]
+
+.pull-left[
+  #### Indexação booleana
+
+  É possível fazer o filtro de dados com um índice booleano
+
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['A1', 'A2', 'A3', 'A4'], 
+    'valor': [5, 12, 8, 30]
+  })
+  
+  df
+  ##   nome  valor
+  ## 0   A1      5
+  ## 1   A2     12
+  ## 2   A3      8
+  ## 3   A4     30
+  ```
+]
+
+&lt;div style="position: relative; top: 24px"&gt;
+.pull-right[
+  O filtro dos dados pode ser feito com .bold[loc] e .bold[iloc]
+  
+  #### loc
+  
+  
+  ```python
+  df.loc[[False, True, False, True]]
+  ##   nome  valor
+  ## 1   A2     12
+  ## 3   A4     30
+  ```
+  
+  #### iloc
+  
+  
+  ```python
+  df.iloc[[False, True, False, True]]
+  ##   nome  valor
+  ## 1   A2     12
+  ## 3   A4     30
+  ```
+]
+&lt;/div&gt;
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Filtro de dados]]
+]
+
+.pull-left[
+  #### Expressões booleanas
+  
+  Testes lógicos podem ser adicionados no filtro para a geração das listas booleanas
+  
+  ```
+      dataframe.loc[(teste 1)]
+  ```
+  
+  &lt;br&gt;
+  Filtrando valores maiores que "5"
+  
+  ```python
+  df.loc[df['valor'] &gt; 5]
+  ##   nome  valor
+  ## 1   A2     12
+  ## 2   A3      8
+  ## 3   A4     30
+  ```
+]
+
+&lt;div style="position: relative; top: 70px"&gt;
+.pull-right[
+
+  A expressão retorna os valores booleanos do teste feito
+  
+  ```python
+  df['valor'] &gt; 5
+  ## 0    False
+  ## 1     True
+  ## 2     True
+  ## 3     True
+  ## Name: valor, dtype: bool
+  ```
+]
+&lt;/div&gt;
+
+---
+# Seleção e filtro de dados com Pandas
+
+.center[
+  .content-box-gray[.bold[Filtro de dados]]
+]
+
+.pull-left[
+  #### Expressões booleanas mais `complexas`
+  
+  Mais testes lógicos podem ser adicionados ao filtro. Cada teste é separado por um operador lógico e parênteses.
+  
+  ```
+      dataframe.loc[(teste 1) operador (teste 2)]
+  ```
+  
+&lt;br&gt;
+Os operadores lógicos são:
+- **e** (`&amp;`);
+- **ou** (`|`).
+]
+
+&lt;div style="position: relative; top: 45px"&gt;
+.pull-right[
+
+  Filtrando valores maiores ou igual a 5 **e** menores que 12
+  
+  ```python
+  df.loc[(df['valor'] &gt;= 5) &amp; (df['valor'] &lt; 12)]
+  ##   nome  valor
+  ## 0   A1      5
+  ## 2   A3      8
+  ```
+  
+  O método `query` pode ser mais amigável
+  
+  ```python
+  df.query('valor &gt;= 5 &amp; valor &lt; 12')
+  ##   nome  valor
+  ## 0   A1      5
+  ## 2   A3      8
+  ```
+]
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center.font140[Agrupamento e agregação de dados]
+
+---
+# Agrupamento e agregação
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.font130[
+.bold[Agrupar] e .bold[agregar] são técnicas que facilitam a análise de dados. Em etapas exploratórias, essas operações podem ser essenciais para a identificação e entendimento de padrões nos dados.
+]
+
+---
+# Agrupamento e agregação
+
+&lt;div style="position: relative; top: 40px"&gt;
+.font130[
+Agregações são operações aplicadas sobre os dados que resultam em conjuntos de valores. Esses valores podem variar em seu tipo de acordo com a estrutura de dados em que é aplicado.
+]
+&lt;/div&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+.content-box-gray[.font120[.bold[Algumas funções de agregação]]] <span>&lt;i class="fas  fa-hand-point-left faa-horizontal animated "&gt;&lt;/i&gt;</span>
+
+- .font120[sum()];
+- .font120[max()];
+- .font120[min()];
+- .font120[mean()].
+
+
+---
+# Agrupamento e agregação
+
+.center[
+  .content-box-gray[.bold[Agregação de dados]]
+]
+
+&lt;div style="position: relative; top: -50px"&gt;
+.pull-left[
+  ### `Series`
+
+  
+  ```python
+  s = pd.Series([1, 2, 3])
+  ```
+
+  Calculando o somatório com `sum`
+  
+  ```python
+  s.sum()
+  ## 6
+  ```
+
+  Valor mínimo com `min`
+  
+  ```python
+  s.min()
+  ## 1
+  ```
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: -50px"&gt;
+.pull-right[
+  ### `DataFrames`
+
+  
+  ```python
+  df = pd.DataFrame([[1, 2, 3], [4, 5, 6]])
+  ```
+  
+  Calculando o valor médio com `mean`
+  
+  ```python
+  df.mean()
+  ## 0    2.5
+  ## 1    3.5
+  ## 2    4.5
+  ## dtype: float64
+  ```
+
+  Valor máximo com `max`.
+  
+  ```python
+  df.max()
+  ## 0    4
+  ## 1    5
+  ## 2    6
+  ## dtype: int64
+  ```
+]
+&lt;/div&gt;
+
+---
+# Agrupamento e agregação
+
+.center[
+  .content-box-gray[.bold[Agrupamento de dados]]
+]
+
+.pull-left[
+  #### Agrupando dados com `groupby`
+  
+  É possível agrupar instâncias do conjunto de dados com base na igualdade de seus atributos.
+  
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['Tel1', 'Tel2', 'Tel3'],
+    'tipo': ['antigo', 'novo', 'novo']
+  })
+  
+  df
+  ##    nome    tipo
+  ## 0  Tel1  antigo
+  ## 1  Tel2    novo
+  ## 2  Tel3    novo
+  ```
+]
+
+&lt;div style="position: relative; top: 70px"&gt;
+.pull-right[
+  Agrupando pela coluna/atributo `tipo`
+  
+  
+  ```python
+  telefones_agrupados = df.groupby('tipo')
+  ```
+
+  &lt;/br&gt;
+
+  Recuperando os grupos gerados
+  
+  
+  ```python
+  telefones_agrupados.groups
+  ## {'antigo': [0], 'novo': [1, 2]}
+  ```
+]
+&lt;/div&gt;
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center[.font170[Agrupamento + Agregação = ] <span>&lt;i class="fas  fa-trophy faa-tada animated "&gt;&lt;/i&gt;</span>]
+
+---
+# Agrupamento + Agregação
+
+&lt;br&gt;
+
+&lt;div style = "position:relative; left: 120px; top: -5px; width: 77%"&gt;
+  &lt;img src="images/python/v2021/pandas_groupby.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de utilização]: Agrupando clientes.]
+
+
+.pull-left[
+  #### Definindo conjunto de dados sintético
+
+  
+  ```python
+  df = pd.DataFrame({
+    'nome': ['ana', 'maria', 'felipe', 'joão'],
+    'idade': [19, 19, 20, 20],
+    'dinheiro': [150, 150, 100, 100]
+  })
+  
+  df
+  ##      nome  idade  dinheiro
+  ## 0     ana     19       150
+  ## 1   maria     19       150
+  ## 2  felipe     20       100
+  ## 3    joão     20       100
+  ```
+  
+  Agrupando pela `idade`
+  
+  ```python
+  agrupado = df.groupby('idade')
+  ```
+]
+
+&lt;div style="position: relative; top: 60px"&gt;
+.pull-right[
+
+  Agregando com `count` (Contando elementos)
+  
+  ```python
+  print(agrupado.count())
+  ##        nome  dinheiro
+  ## idade                
+  ## 19        2         2
+  ## 20        2         2
+  ```
+
+  Agregando com `mean` (Média salarial por idade)
+  
+  
+  ```python
+  agrupado['dinheiro'].mean()
+  ## idade
+  ## 19    150
+  ## 20    100
+  ## Name: dinheiro, dtype: int64
+  ```
+]
+&lt;/div&gt;
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center[.font170[Leitura e escrita de dados] <span>&lt;i class="fas  fa-book faa-vertical animated "&gt;&lt;/i&gt;</span>]
+
+---
+# Leitura e escrita de dados
+
+&lt;div style="position: relative; top: 40px"&gt;
+.font130[
+Além das estruturas de dados e funcionalidades para a manipulação e processamento dos dados, o Pandas fornece ainda um conjunto de opções para a leitura e escrita de dados.
+]
+&lt;/div&gt;
+
+&lt;br&gt;
+
+&lt;div style = "position:relative; left: 80px; top: 30px; width: 85%"&gt;
+    &lt;img src="images/python/v2021/pandas_io_readwrite.png"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+&lt;a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#io-tools-text-csv-hdf5"&gt;.bold.center.font50[Lista de formatos e operações de leitura/escrita do Pandas]&lt;/a&gt;
+
+---
+# .font70[.bold[Exemplo de utilização]: Leitura de dados CSV.]
+
+.pull-left[
+  #### Lendo e escrevendo dados `CSV`
+
+  
+  ```python
+  data = pd.read_csv("data/titanic.csv", sep = ',')
+  
+  data.head(n = 3)
+  ##    PassengerId  Pclass                              Name  ...    Fare  Cabin  Embarked
+  ## 0          892       3                  Kelly, Mr. James  ...  7.8292    NaN         Q
+  ## 1          893       3  Wilkes, Mrs. James (Ellen Needs)  ...  7.0000    NaN         S
+  ## 2          894       2         Myles, Mr. Thomas Francis  ...  9.6875    NaN         Q
+  ## 
+  ## [3 rows x 11 columns]
+  ```
+  
+  Os dados carregados são representados por `Series` e `DataFrames`.
+
+  
+  ```python
+  type(data)
+  ```
+  
+  ```
+  ## "&lt;class 'pandas.core.frame.DataFrame'&gt;"
+  ```
+]
+
+&lt;div style="position: relative; top: 70px"&gt;
+.pull-right[
+
+  Verificando a quantidade de dados carregados com `shape`
+  
+  
+  ```python
+  data.shape  # (linhas, colunas)
+  ## (418, 11)
+  ```
+
+  &lt;br&gt;
+
+  Escrevendo os dados em um arquivo `CSV`
+
+  
+  ```python
+  data.to_csv('data/resultados.csv')
+  ```
+]
+&lt;/div&gt;
+
+---
+class: title-slide
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+# .center.font170[Exemplo de análise de dados]
+
+
+---
+# .font70[.bold[Exemplo de análise]: Características de meteoritos.]
+
+&lt;div style="position: relative; top: -15px"&gt;
+.font110[
+Exemplo de análise de dados utilizando o conjunto de dados [Meteorite Landings](https://www.kaggle.com/nasa/meteorite-landings), disponibilizado no Kaggle pela NASA. O conjunto de dados é composto por mais de 45 mil registros, contendo diferentes informações sobre meteoritos que cairam na Terra.
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: -35px"&gt;
+.pull-left[
+  #### Carregando os dados
+
+  
+  ```python
+  import pandas as pd
+  
+  data = pd.read_csv("data/meteorite-landings.csv")
+  type(data)
+  ```
+  
+  
+  ```
+  ## "&lt;class 'pandas.core.frame.DataFrame'&gt;"
+  ```
+
+  #### Verificando os atributos dos dados. 
+  
+  ```python
+  data.columns
+  ## Index(['name', 'id', 'nametype', 'recclass', 'mass', 'fall', 'year', 'reclat',
+  ##        'reclong', 'GeoLocation'],
+  ##       dtype='object')
+  ```
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: -35px"&gt;
+.pull-right[
+  #### Separando os dados por tipo de meteorito
+  
+  
+  ```python
+  df_valid = data.loc[data['nametype'] == 'Valid']
+  df_relict = data.loc[data['nametype'] == 'Relict']
+  ```
+  
+  &lt;br&gt;
+  
+  #### Verificando as quantidades de cada tipo
+  
+  ```python
+  print(df_valid.shape)
+  ## (45641, 10)
+  ```
+  
+  
+  ```python
+  print(df_relict.shape)
+  ## (75, 10)
+  ```
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de utilização]: Características de meteoritos.]
+
+&lt;div style="position: relative; top: -15px"&gt;
+.pull-left[
+  #### Verificando a massa média de cada tipo de meteorito
+  
+  
+  ```python
+  df_groupby_nametype = data.groupby('nametype')
+  df_groupby_nametype['mass'].mean()
+  ## nametype
+  ## Relict        0.121269
+  ## Valid     13285.656127
+  ## Name: mass, dtype: float64
+  ```
+  
+  #### Contando meteoritos por classe
+  
+  
+  ```python
+  df_groupedby_recclass = data.groupby('recclass')
+  df_groupedby_recclass['recclass'].count().head(n = 3)
+  ## recclass
+  ## Acapulcoite              54
+  ## Acapulcoite/Lodranite     6
+  ## Acapulcoite/lodranite     3
+  ## Name: recclass, dtype: int64
+  ```
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: 60px"&gt;
+.pull-right[
+
+  #### Filtrando os dados pela quantidade de `mass` (Gramas)
+  
+  
+  ```python
+  df_gt_mass_500 = data.loc[data['mass'] &gt; 500]
+  df_gt_mass_500.shape
+  ## (7036, 10)
+  ```
+  
+  &lt;br&gt;
+  
+  #### Salvando os dados filtrados
+  
+  
+  ```python
+  df_gt_mass_500.to_csv('data/meteorite_gt_500_mass.csv')
+  ```
+]
+&lt;/div&gt;
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;
+
+# .center[.font170[Visualização de dados] <span>&lt;i class="fas  fa-chart-bar faa-tada animated "&gt;&lt;/i&gt;</span>]
+
+---
+# Pacotes de visualização
+
+### As bibliotecas de visualização de dados `ggplot2` e `plotnine` são baseadas na obra .bold[The Grammar of Graphics], a qual apresenta uma grámatica para elaboração de gráficos. Tal gramática é composta por camadas, as quais descrevem os componentes do gráfico.
+
+.pull-left[
+
+.center.font110[Camadas de componentes gráficos]
+
+&lt;img src="./images/2_r_img/ggplot-2.png" width="70%" height="70%" style="display: block; margin: auto;" /&gt;
+
+]
+
+--
+
+.pull-right[
+
+.center.font110[Sintaxe do ggplot/plotnine]
+
+
+```r
+   ggplot(data = &lt;DATA&gt;, aes(&lt;MAPPINGS&gt;)) + 
+    &lt;GEOM_FUNCTION&gt;(
+      mapping = aes(&lt;MAPPINGS&gt;),
+      stat = &lt;STAT&gt;,
+      position = &lt;POSITION&gt;) +
+    &lt;COORDINATE_FUNCTION&gt; +
+    &lt;FACET_FUNCTION&gt;
+```
+
+]
+
+---
+# Mapeamento estético
+
+### A estética descreve cada aspecto de um dado elemento gráfico. Descrevemos as posições (`position`) por um valor x e y, mas outros sistemas de coordenadas são possíveis. É possível alterar a forma (`shape`), tamanho (`size`) e cor (`size`) dos elementos. 
+
+.center[
+&lt;img src="./images/2_r_img/aes_ggplot.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+.center.font80[Fundamentals of Data Visualization - Claus O. Wilke]
+]
+---
+# Objetos geométricos
+.center[
+&lt;img src="./images/2_r_img/ggplot.png" width="38%" height="38%" style="display: block; margin: auto;" /&gt;
+
+.center.font60[Fundamentals of Data Visualization - Claus O. Wilke]
+]
+
+---
+# .font70[.bold[Exemplo de visualização]: Biblioteca plotnine]
+
+
+
+&lt;div style="position: relative; top: 5px"&gt;
+
+.pull-left[
+
+#### Visualizando dados com plotnine
+
+
+```python
+from plotnine import *  # funções
+from plotnine.data import mtcars # dados de exemplo
+
+print(mtcars.head(n = 3))
+##             name   mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
+## 0      Mazda RX4  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
+## 1  Mazda RX4 Wag  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
+## 2     Datsun 710  22.8    4  108.0   93  3.85  2.320  18.61   1   1     4     1
+```
+
+#### Colunas do conjunto de dados
+
+```python
+mtcars.columns
+## Index(['name', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am',
+##        'gear', 'carb'],
+##       dtype='object')
+```
+]
+&lt;/div&gt;
+
+--
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-right[
+
+#### Definindo os dados do plot
+
+
+```python
+ggplot(mtcars)
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_1.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de visualização]: Biblioteca plotnine]
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-left[
+
+#### Visualizando dados com plotnine
+
+
+```python
+from plotnine import *  # funções
+from plotnine.data import mtcars # dados de exemplo
+
+print(mtcars.head(n = 3))
+##             name   mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
+## 0      Mazda RX4  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
+## 1  Mazda RX4 Wag  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
+## 2     Datsun 710  22.8    4  108.0   93  3.85  2.320  18.61   1   1     4     1
+```
+
+#### Colunas do conjunto de dados
+
+```python
+mtcars.columns
+## Index(['name', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am',
+##        'gear', 'carb'],
+##       dtype='object')
+```
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-right[
+
+#### Mapeamento estético
+
+
+```python
+ggplot(mtcars, aes(x = 'mpg', y = 'disp'))
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_2.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de visualização]: Biblioteca plotnine]
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-left[
+
+#### Visualizando dados com plotnine
+
+
+```python
+from plotnine import *  # funções
+from plotnine.data import mtcars # dados de exemplo
+
+print(mtcars.head(n = 3))
+##             name   mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
+## 0      Mazda RX4  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
+## 1  Mazda RX4 Wag  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
+## 2     Datsun 710  22.8    4  108.0   93  3.85  2.320  18.61   1   1     4     1
+```
+
+#### Colunas do conjunto de dados
+
+```python
+mtcars.columns
+## Index(['name', 'mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am',
+##        'gear', 'carb'],
+##       dtype='object')
+```
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-right[
+
+#### Adição de objeto geométrico
+
+
+```python
+(
+  ggplot(mtcars, aes(x = 'mpg', y = 'disp'))
+    + geom_point()
+)
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_3.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
+]
+&lt;/div&gt;
+
+---
+# .font70[.bold[Exemplo de visualização]: Biblioteca plotnine]
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-left[
+
+#### Cores no objeto geométrico
+
+
+```python
+(
+  ggplot(mtcars, aes(x = 'mpg', y = 'disp', color = 'factor(cyl)'))
+    + geom_point()
+)
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_4.png" width="90%" height="90%" style="display: block; margin: auto;" /&gt;
+]
+&lt;/div&gt;
+
+&lt;div style="position: relative; top: 5px"&gt;
+.pull-right[
+
+#### Adicionando outros objetos geométricos
+
+
+```python
+(
+  ggplot(mtcars, aes(x = 'mpg', y = 'disp', color = 'factor(cyl)'))
+    + geom_point() + geom_line()
+)
+```
+
+
+
+&lt;img src="./images/python/v2021/ggplot_5.png" width="85%" height="85%" style="display: block; margin: auto;" /&gt;
+]
+&lt;/div&gt;
+
+---
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# .center.font170[[Hands-on](https://www.kaggle.com/phelpsmemo/intro-ds-python-23-07) <span>&lt;i class="fas  fa-hand-paper faa-float animated faa-slow "&gt;&lt;/i&gt;</span>]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
